@@ -4,25 +4,38 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Creating a Responsive Web Design</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
 	</head>
+	<style>
+		label, input {
+		margin-top: 2px;
+		}
+		#wrapper {
+		text-align: center;
+		}
+		</style>
 	<body>
 	<ul id="navbar">
-  <li><a href="login.html">Log-In</a></li>
+  <li><a class="active" href="About.html">About Us</a></li>
+  <li><a href="Contact.html">Contact Us</a></li>
+  <li><a href="modelorder.html">Order Here</a></li>
+   <li><a href="login.html">Login Page</a></li>
+   <li><a href="FAQ.html">Faq Page</a></li>
 </ul>
-	<h1>Enter in your info</h1>
-		<label>First Name: </label><input type="text" name="username" id="form-name"><br>
-		<label>Last Name: </label><input type="text" name="username" id="form-name"><br>
-		<label>Street Address: </label><input type="text" name="username" id="form-name"><br>
-		<label>City: </label><input type="text" name="username" id="form-name"><br>
-		<label>State: </label><input type="text" name="username" id="form-name"><br>
-		<label>Zip Code: </label><input type="text" name="username" id="form-name"><br>
-		<label>Phone Number: </label><input type="text" name="username" id="form-name"><br>
+<div id="wrapper">
+	<h1>Enter your info then submit to create your account</h1>
+		<label style="margin-right: 87px;">First Name: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 89px;">Last Name: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 66px;">Street Address: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 131px;">City: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 127px;">State: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 99px;">Zip Code: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right:63px;">Phone Number: </label><input type="text" name="username" id="form-name"><br>
 		<label>Alternate Phone Number: </label><input type="text" name="username" id="form-name"><br>
-		<label>User ID: </label><input type="text" name="username" id="form-name"><br>
-		<label>Password: </label><input type="text" name="username" id="form-name"><br>
-		<button type="submit">Submit</button>
+		<label style="margin-right: 109px;">User ID: </label><input type="text" name="username" id="form-name"><br>
+		<label style="margin-right: 99px;">Password: </label><input type="text" name="username" id="form-name"><br>
+		<button type="submit" style="margin-top: 10px;">Submit</button>
+		</div>
 		<!--database call to validate then insert record into table then generate customer id -->
 		<?php 
 $ser="localhost";
