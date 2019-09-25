@@ -6,6 +6,15 @@
 		<title>Creating a Responsive Web Design</title>
 		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+		$( document ).ready(function() {
+		$('#orderdisplay').hide();
+		$("#ordersubmit").click(function(){
+		$('#orderdisplay').show();
+		});
+		});
+		</script>
 		<style>
 		div#order {
 		text-align: center;
@@ -62,14 +71,9 @@
 </select></li>
 <li><label>Color: </label>
 <select>
-<option value="volvo">Black</option>
-  <option value="saab">White</option>
-  <option value="volvo">Sonic Yellow</option>
-  <option value="saab">Shocking Red</option>
+<option value="volvo">Black & White</option>
+  <option value="saab">Yellow & Red (Prem. $+250)</option>
 </select>
-<label>     Premium (+$250) </label>
-<input type="radio" name="gender" value="male">Yes
-  <input type="radio" name="gender" value="female">No
   </li>
 <li><label>Wheels: </label>
 <select>
@@ -77,7 +81,7 @@
   <option value="saab">19"</option>
 </select>
 </li>
-<li><label>     Premium (+$100) </label>
+<li><label>     Premium Wheels(+$100) </label>
 <input type="radio" name="gender" value="male">Yes
   <input type="radio" name="gender" value="female">No</li>
 <li><label>Seat Type: </label><select>
@@ -85,10 +89,11 @@
   <option value="saab">Standard</option>
 </select></li>
 </ul>
-		<button type="submit">Submit</button>
+		<button type="submit" id="ordersubmit">Submit</button>
 		  <p>Color options will change based on if they select premium or not.<p>
 		  </div>
 		  </div>
+		  <div id="orderdisplay">
 		  <h2>Order Information</h2>
 		  <div id="totalcont">
 		  <div id="total">
@@ -100,7 +105,10 @@
 		  <button id="finish" type="submit">Finish Order</button>
 		  </div>
 		  </div>
+		 
 		  <p>Order information changes depending on model order form.</p>
+		  <p> THIS INFO NEEDS TO GO TO MODELINFORMATION PAGE
+		   </div>
 		<!--database call to validate then insert record into table then generate customer id -->
 		<?php 
 $ser="localhost";
