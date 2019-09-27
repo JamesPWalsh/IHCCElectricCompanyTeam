@@ -7,7 +7,7 @@ ul#navbar {
 }
 
 ul#navbar > li{
-  float: left;
+  float: right;
 }
 
 ul#navbar > li a {
@@ -17,8 +17,83 @@ ul#navbar > li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 /* Change the link color to #111 (black) on hover */
 ul#navbar > li a:hover {
-  background-color: #111;
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
 }
+ul#navbar > li:hover {
+-webkit-filter: sepia(100%); /* Safari 6.0 - 9.0 */
+  filter: sepia(100%);
+}
+
+ul#navbar > li a:active {
+  box-shadow: 0 3px #FFF;
+  transform: translateY(1px);
+}
+ul#navbar > li a:hover, ul#navbar > li a:active {
+box-shadow:0 0 2px #FFF; 
+} 
+.effect a {
+	position:relative;
+	outline:none;
+}
+.effect a::before,
+.effect a::after {
+	position: absolute;
+	width: 100%;
+	background: #fff;
+	content: '';
+	height:100%;
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	pointer-events: none;
+}
+.effect a::before {
+	height: 1px;
+	top: 0;
+	left: 0;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+	-webkit-transform-origin: 0 0;
+	-moz-transform-origin: 0 0;
+	transform-origin: 0 0;
+	opacity: 0;
+}
+.effect a::after {
+	height: 1px;
+	right: 0;
+	bottom: 0;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	transform: rotate(90deg);
+	-webkit-transform-origin: 100% 0;
+	-moz-transform-origin: 100% 0;
+	transform-origin: 100% 0;
+	opacity: 0;
+}
+.effect a:hover::before,
+.effect a:hover::after,
+.effect a:focus::before,
+.effect a:focus::after {
+	opacity: 1;
+}
+
+.effect a:hover::before,
+.effect a:focus::before {
+	left: 50%;
+	-webkit-transform: rotate(0deg) translateX(-50%);
+	-moz-transform: rotate(0deg) translateX(-50%);
+	transform: rotate(0deg) translateX(-50%);
+}
+
+.effect a:hover::after,
+.effect a:focus::after {
+	right: 50%;
+	-webkit-transform: rotate(0deg) translateX(50%);
+	-moz-transform: rotate(0deg) translateX(50%);
+	transform: rotate(0deg) translateX(50%);
+}	
