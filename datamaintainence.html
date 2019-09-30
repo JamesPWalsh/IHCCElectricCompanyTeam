@@ -3,18 +3,23 @@
 <head>
 <!--Administration.html 
 	Author: Robert Hannah
-	09/05/2019 -->
+	09/26/2019 -->
 	<meta charset="utf-8">	
 	<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
 </head>
 <body>
+
 <ul id="navbar">
-  <li><a class="Active" href="admincontrolpanel.html">Admin Control Panel</a></li>
+  <li><a class="active" href="#home">About Us</a></li>
+  <li><a href="#news">Contact Us</a></li>
+  <li><a href="#contact">Model Information</a></li>
+  <li><a href="#about">Display Options</a></li>
+   <li><a href="#about">Faq Page</a></li>
 </ul>
-<form name="Administration" method="post" action="DataMantainance.html">
+<center>
 <fieldset>
 <label>Database Option </label><br />
-<select>
+<select id = "opt">
   <option value="Add">Add</option>
   <option value="Delete">Delete</option>
   <option value="Change">Change</option>
@@ -22,41 +27,64 @@
 <br />
 <br />
 <label> Model</label><br />
-<select>
+<select id = "model">
   <option value="Lightning">Lightning</option>
   <option value="Sparkle">Sparkle</option>
 </select>
 <br />
 <br />
 <label> Colors </label><br />
-<select>
-  <option value="Lightning">Premium: Sonic Yellow & Shocking Red + $250</option>
-  <option value="Sparkle">Standard: Black & White free</option>
+<select id = "Color">
+  <option value="Premium: Sonic Yellow & Shocking Red + $250">Premium: Sonic Yellow & Shocking Red + $250</option>
+  <option value="Standard: Black & White free">Standard: Black & White free</option>
 </select>
 <br />
 <br />
 <label> Wheels </label><br />
-<select>
-  <option value="Lightning">Premium: Wheels + $100</option>
-  <option value="Sparkle">Standard: Wheels free</option>
+<select id = "Wheels">
+  <option value="Premium: Wheels + $100">Premium: Wheels + $100</option>
+  <option value="Standard: Wheels free">Standard: Wheels free</option>
+</select>
+<br />
+<br />
+<label> Preformance Graphics </label><br />
+<select id = "Graphics">
+  <option value="yes + $350">yes + $350</option>
+  <option value="no">no</option>
 </select>
 <br />
 <br />
 <label> Seats </label><br />
-<select>
-  <option value="Lightning">Solo </option>
-  <option value="Sparkle">Standard</option>
+<select id = "Seats">
+  <option value="Solo">Solo </option>
+  <option value="Standard">Standard</option>
 </select>
 <br />
 <br />
 <label> Cost </label>
-		<br />
-		<label></label>
-		<div class="test"> <input type="text" name="Cost" id="Cost" value="8999" size="30" /> </div>
-		<br />
-		<br />
+<br />
+	<input type="text" name="Cost" id="Cost" value="8999" size="30" />
+<br />
+<br />
 </form>
-<input type="submit" value="Submit" />
+<button onclick=Display()>Submit</button>
+</center>
+
+<div id="myDIV">
+<script>
+function Display(){
+var seat = document.getElementById("Seats").value;
+var cost = document.getElementById("Cost").value;
+var graphics = document.getElementById("Graphics").value;
+var wheels = document.getElementById("Wheels").value;
+var model = document.getElementById("model").value;
+var options = document.getElementById("opt").value;
+var color = document.getElementById("Color").value;
+document.write(options +" <br /> " + model +" <br /> " + color +" <br /> " + wheels +" <br /> " + graphics +" <br /> " + seat +" <br /> $" + cost);
+}
+</script>
+</div>
+
 </fieldset>
 
 <footer>
