@@ -7,6 +7,40 @@
 	<meta charset="utf-8">	
 	<link rel="stylesheet" type="text/css" href="navbar.css" />
 
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  padding: 20px;
+}
+</style>
+
 </head>
 
 <body>
@@ -28,81 +62,40 @@
 	<p> please fill out this form.</p>
 </center>
 <center>	
-<form name="Contact" method="post" action="Contact.html">
-<fieldset>
-		<legend> Contact Form </legend>
-		
-		<label> Suffix </label>
-		<div id="Radio">
-		Mr.
-		<input type="radio" name="Suffix" id="Suffix" />
-		
-		 Ms.
-		<input type="radio" name="Suffix" id="Suffix" />
-		
-		Mrs.
-		<input type="radio" name="Suffix" id="Suffix" />
-		</div> <!-- Radio-->
-		<br />
-		<label></label>
-		<br />
-		
-		<label> First Name </label>
-		<br />
-		<label></label>
-		<div class="test"> <input type="text" name="firstname" id="firstname" size="30" /> </div>
-		<br />
-		<br />
-		
-		<label> Last Name </label>
-		<br />
-		<div class="test"> <input type="Text" name="lastname" id="firstname" size="30" /> </div>
-		<br />
-		<br />
-		
-		<label> Email </Label>
-		<br />
-		<div class="test"> <input type="email" name="email" id="email" size="30" /> </div>
-		<br />
-		<br />
-		
-		<label> Phone Number </Label> 
-		<br />
-		<div class="test"> <input type="email" name="email" id="email" size="30" /> </div>
-		<br />
-		<br />
-		
-				<label> Prefered contact </Label> 
-		<br />
-		<center> <select name="options" id="options">
- <option value="option1">Phone</option>
- <option value="option2">Email</option>
-</select> </center>
-		<br />
-		<br />
-		
-		<label><label/>
-		
-		<label> Message </Label>
-		<br />
-		<div class="test"> <textarea name="Message" id="Message" cols="40" rows="10" /> 
-		</textarea> </div>
 
-		<br />
-		<br />
-				<br />
-		<br />
-				<br />
-		<br />
-				<br />
-		<br />
-				<br />
-		
-		<label></label>
-		<br />
-		<input type="submit" value="send" />
-		</form>
-</fieldset>
+<div class="container">
+  <form action="/action_page.php">
+	
+	<input type="radio" name="gender" value="male"> Mr.
+	<input type="radio" name="gender" value="female"> Ms.
+	<input type="radio" name="gender" value="other"> Mrs.<br><br>
+	
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="fname">E-Mail</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="fname">Phone Number</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="country">Prefered Contact</label>
+    <select id="country" name="country">
+      <option value="email">E-Mail</option>
+      <option value="text">Text</option>
+      <option value="call">Call</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
 </center>
 
 <p> If this doesn't suit you, or isnt working</br>
