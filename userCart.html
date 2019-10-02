@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Cart</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+		$( document ).ready(function() {
+		$('#orderdisplay').hide();
+		$("#ordersubmit").click(function(){
+		$('#orderdisplay').show();
+		});
+		});
+		</script>
+		<style>
+		div#order {
+		text-align: center;
+		}
+		div#totalcont {
+		text-align: center !important;
+		}
+		div#total {
+		float: none;
+		display: inline-block;
+		border: 1px black solid;
+		padding: 25px;
+		}
+		div#clean {
+		display: inline-block;
+		}
+		ul {
+		list-style:none;
+		}
+		li {
+		text-align: left;
+		}
+		h2 {
+		text-align: center;
+		}
+		label {
+		font-weight: bold;
+		}
+		button#finish {
+		margin-top: 10px;
+		}
+		p {
+		text-align: center;
+		}
+		</style>
+	</head>
+	<body>
+		<ul id="navbar">
+		  <li><a class="Active" href="ModelInformation.html">Model Information</a></li>
+		  <li><a class="Active" href="Contentdisplay.html">Content Display</a></li>
+		  <li><a class="Active" href="About.html">About Us</a></li>
+		  <li><a href="Contact.html">Contact Us</a></li>
+		  <li><a href="ModelInformation.html">Model Information</a></li>
+		  <li><a href="Display.html">Display Options</a></li>
+		  <li><a href="FAQ.html">Faq Page</a></li>
+		</ul>
+		
+			<div id="order">
+	<h1>Cart</h1>
+	<div id="clean">
+	<ul>
+		<li><label>Model: </label><select>
+  <option value="volvo">Lightning (96v)</option>
+  <option value="saab">Sparkle (48v)</option>
+</select></li>
+<li><label>Color: </label>
+<select>
+<option value="volvo">Black & White</option>
+  <option value="saab">Yellow & Red (Prem. $+250)</option>
+</select>
+  </li>
+<li><label>Wheels: </label>
+<select>
+  <option value="volvo">18"</option>
+  <option value="saab">19"</option>
+</select>
+</li>
+<li><label>     Premium Wheels(+$100) </label>
+<input type="radio" name="premium" value="male" checked>Yes
+  <input type="radio" name="premium" value="female">No</li>
+<li><label>Seat Type: </label><select>
+  <option value="volvo">Solo</option>
+  <option value="saab">Standard</option>
+</select></li>
+</ul>
+		<button type="submit" id="ordersubmit">Place Order</button>
+
+	</body>
+</html>
