@@ -15,6 +15,14 @@
 		});
 		});
 		</script>
+		
+		<script>
+		function myFunction() 
+		{
+			window.confirm("Add Chocie Of Deposit Here(if possible)");
+		}
+		</script>
+		
 		<style>
 		div#order {
 		text-align: center;
@@ -69,30 +77,48 @@
 		<li><label>Model: </label><select>
   <option value="volvo">Lightning (96v)</option>
   <option value="saab">Sparkle (48v)</option>
+  <option value="volvo">Thunder (192V)</option>
+  <option value="saab">Firefly (24v)</option>
+  
 </select></li>
+
 <li><label>Color: </label>
-<select>
-<option value="volvo">Black & White</option>
-  <option value="saab">Yellow & Red (Prem. $+250)</option>
-</select>
-  </li>
+	<select>
+		<option value="volvo">Black & White</option>
+	    <option value="saab">Yellow & Red (Prem. $+250)</option>
+	</select>
+</li>
+  
+<li><label>     Performance Graphics Add-on(+$350) </label>
+	<fieldset id="group1">
+		<input type="radio" value="male" name="group1" checked>Yes
+		<input type="radio" value="female" name="group1">No
+	</fieldset>
+</li>  
+  
 <li><label>Wheels: </label>
 <select>
   <option value="volvo">18"</option>
   <option value="saab">19"</option>
 </select>
 </li>
+
 <li><label>     Premium Wheels(+$100) </label>
-<input type="radio" name="premium" value="male" checked>Yes
-  <input type="radio" name="premium" value="female">No</li>
+	<fieldset id="group2">
+		<input type="radio" value="male" name="group2" checked>Yes
+		<input type="radio" value="female" name="group2">No
+	</fieldset>
+</li>
+
 <li><label>Seat Type: </label><select>
   <option value="volvo">Solo</option>
   <option value="saab">Standard</option>
 </select></li>
+
 </ul>
 		
 	<form action="order.html">
-		<input type="submit" value="Place Order" />
+		<input type="submit" value="Place Order" onclick="myFunction()"/>
 	</form>
 
 	</body>
