@@ -8,6 +8,12 @@
 		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
 		<script src="jquery-3.4.1.min.js"></script>
 		<script>
+		function myFunction() 
+		{
+			window.confirm("Add Chocie Of Deposit Here(if possible)");
+		}
+		</script>
+		<script>
 		$( document ).ready(function() {
 		$('#orderdisplay').hide();
 		$("#ordersubmit").click(function(){
@@ -61,55 +67,53 @@
   <li><a href="Display.html">Display Options</a></li>
   <li><a href="FAQ.html">Faq Page</a></li>
 </ul>
-	<div id="order">
-	<h1>Model Order</h1>
+
+			<div id="order">
+	<h1>Order</h1>
 	<div id="clean">
 	<ul>
 		<li><label>Model: </label><select>
-  <option value="lightning">Lightning (96v)</option>
-  <option value="sparkle">Sparkle (48v)</option>
-    <option value="thunder">Thunder (192v)</option>
-  <option value="firefly">Firfly (24v)</option>
+  <option value="volvo">Lightning (96v)</option>
+  <option value="saab">Sparkle (48v)</option>
+  <option value="volvo">Thunder (192V)</option>
+  <option value="saab">Firefly (24v)</option>
+  
 </select></li>
+
 <li><label>Color: </label>
-<select>
-<option value="volvo">Black & White</option>
-  <option value="saab">Yellow & Red (Prem. $+250)</option>
-</select>
-  </li>
+	<select>
+		<option value="volvo">Black & White</option>
+	    <option value="saab">Yellow & Red (Prem. $+250)</option>
+	</select>
+</li>
+  
+<li><label>     Performance Graphics Add-on(+$350) </label>
+	<fieldset id="group1">
+		<input type="radio" value="male" name="group1" checked>Yes
+		<input type="radio" value="female" name="group1">No
+	</fieldset>
+</li>  
+  
 <li><label>Wheels: </label>
 <select>
   <option value="volvo">18"</option>
   <option value="saab">19"</option>
 </select>
 </li>
+
 <li><label>     Premium Wheels(+$100) </label>
-<input type="radio" name="gender" value="male">Yes
-  <input type="radio" name="gender" value="female">No</li>
+	<fieldset id="group2">
+		<input type="radio" value="male" name="group2" checked>Yes
+		<input type="radio" value="female" name="group2">No
+	</fieldset>
+</li>
+
 <li><label>Seat Type: </label><select>
   <option value="volvo">Solo</option>
   <option value="saab">Standard</option>
 </select></li>
-</ul>
-		<button type="submit" id="ordersubmit">Submit</button>
-		  <p>Color options will change based on if they select premium or not.<p>
-		  </div>
-		  </div>
-		  <div id="orderdisplay">
-		  <h2>Order Information</h2>
-		  <div id="totalcont">
-		  <div id="total">
-		  <label>Model:</label> Lightning (96v)<br>
-		  <label>Color:</label> Sonic Yellow<br>
-		  <label>Wheels:</label> 19" Premium<br>
-		  <label>Seat Type: </label>Solo<br>
-		  <label>Order Total:</label> $9,349<br>
-		  <button id="finish" type="submit">Finish Order</button>
-		  </div>
-		  </div>
-		 
-		  <p>Order information changes depending on model order form.</p>
-		  <p> THIS INFO NEEDS TO GO TO MODELINFORMATION PAGE
+<br>
+<input type="submit" value="Place Order" onclick="myFunction()"/>
 		   </div>
 		<!--database call to validate then insert record into table then generate customer id -->
 		<?php 
