@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Checkout</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+		<script src="jquery-3.4.1.min.js"></script>
+		<script>
+		$( document ).ready(function() {
+		$('#orderdisplay').hide();
+		$("#ordersubmit").click(function(){
+		$('#orderdisplay').show();
+		});
+		});
+		</script>
+		<script>
+		function myFunction() {
+		  var txt;
+		  if (confirm("Order Submitted!")) {
+
+		  } else {
+
+		  }
+
+		}
+		</script>
+
+		
+<style>
+body {font-family: Arial, Helvetica, sans-serif;
+ background: url("images/ironrun.jpg") no-repeat center center fixed;
+}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+
+	</head>
+	<body>
+		<ul id="navbar">
+		  <li><a class="Active" href="ModelInformation.html">Model Information</a></li>
+		  <li><a class="Active" href="Contentdisplay.html">Content Display</a></li>
+		  <li><a class="Active" href="About.html">About Us</a></li>
+		  <li><a href="Contact.html">Contact Us</a></li>
+		  <li><a href="ModelInformation.html">Model Information</a></li>
+		  <li><a href="Display.html">Display Options</a></li>
+		  <li><a href="FAQ.html">Faq Page</a></li>
+		</ul>
+		
+<div id="content">
+
+<div class="container">
+  <form action="/action_page.php">
+
+<center>
+	<h1>Checkout</h1>
+</center>
+<center>	
+	
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Address 1</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="fname">City</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your state..">
+
+    <label for="fname">State</label>
+    <input type="text" id="fname" name="firstname">
+	
+	<label for="fname">ZIP</label>
+    <input type="text" id="fname" name="firstname">
+
+	<label for="fname">Country/Region</label>
+    <input type="text" id="fname" name="firstname" placeholder="USA">
+
+    <label for="country">Payment Method</label>
+    <select id="country" name="country">
+      <option value="email">Paypal</option>
+      <option value="text">Credit</option>
+      <option value="call">Debit</option>
+    </select>
+
+	<label for="fname">Card Number</label>
+    <input type="text" id="fname" name="firstname">
+
+	<button onclick="myFunction()" >Place Order</button>
+  </form>
+</div>
+
+</center>
+
+
+	</body>
+</html>
