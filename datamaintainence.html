@@ -6,6 +6,12 @@
 	09/26/2019 -->
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
 	body {
 		background-color: #9a9b9c;
@@ -14,13 +20,34 @@
 </head>
 <body>
 
-<ul id="navbar">
-  <li><a class="active" href="#home">About Us</a></li>
-  <li><a href="#news">Contact Us</a></li>
-  <li><a href="#contact">Model Information</a></li>
-  <li><a href="#about">Display Options</a></li>
-   <li><a href="#about">Faq Page</a></li>
+<div id="navbar">
+<div class="login-container">
+  <form action="/action_page.php">
+    <input class="login" type="text" placeholder="Username" name="username">
+    <input class="login" type="text" placeholder="Password" name="password">
+    <button type="submit">Login</button>
+  </form>
+</div>
+<div class="topnav" style="display:none">
+  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
+  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
+  </a>
+
+<div id="myLinks">
+<a class="active" href="About.html" id="droplink">About Us</a>
+ <a href="modelorder.html" id="droplink">Order Here</a>
+  <a href="Contact.html" id="droplink">Contact Us</a>
+  <a href="accountcreation.html" id="droplink">Sign Up</a>
+</div>
+</div>
+<ul class="effect" id="effect" style="display:none">
+	<li><a class="active" href="About.html">About Us</a></li>
+<li><a href="modelorder.html">Order Here</a></li>
+ <li><a href="Contact.html">Contact Us</a></li>
+ <li><a href="accountcreation.html" id="droplink">Sign Up</a></li>
 </ul>
+</div>
+
 <center>
 <fieldset>
 <label>Database Option </label><br />
@@ -139,7 +166,37 @@ document.write(
 </div>
 </footer>
 
+<script>
+$('#effect').show();
+$('.login-container').show();
+$('.topnav').hide();
+function myFunction() {
+var x = document.getElementById("myLinks");
+if (x.style.display === "block") {
+x.style.display = "none";
+$('.login-container').show();
 
+} else {
+x.style.display = "block";
+x.style.textAlign = "center";
+
+}
+}
+function myFunction2(x) {
+if (x.matches) { // If media query matches
+ $('#effect').hide();
+$('.topnav').show();
+} else {
+$('.login-container').show();
+$('#effect').show();
+$('.topnav').hide();
+}
+}
+
+var x = window.matchMedia("(max-width: 900px)");
+myFunction(x); // Call listener function at run time;
+x.addListener(myFunction2); // Attach listener function on state changes
+</script>
 
 </body>
 </html>
