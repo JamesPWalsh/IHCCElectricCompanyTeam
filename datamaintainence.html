@@ -1,11 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!--Administration.html 
+<!--Administration.html
 	Author: Robert Hannah
 	09/26/2019 -->
-	<meta charset="utf-8">	
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+	<style>
+	body {
+		background-color: #9a9b9c;
+	}
+	</style>
 </head>
 <body>
 
@@ -28,8 +33,10 @@
 <br />
 <label> Model</label><br />
 <select id = "model">
-  <option value="Lightning">Lightning</option>
-  <option value="Sparkle">Sparkle</option>
+	<option value="Lightning">Lightning</option>
+	<option value="Sparkle">Sparkle</option>
+	<option value="Thunder">Thunder</option>
+	<option value="Firefly">Firefly</option>
 </select>
 <br />
 <br />
@@ -81,6 +88,7 @@ var model = document.getElementById("model").value;
 var options = document.getElementById("opt").value;
 var color = document.getElementById("Color").value;
 document.write("<link rel="+"stylesheet "+"type="+"text/css"+" media="+"screen"+" href="+"navbar.css"+">"
++"<style> body { background-color: #9a9b9c; } </style>"
 +"<center><fieldset>"
 +"<ul id="+"navbar"+">"
 +"<li><a class="+"active"+"href="+"#home"+">About Us</a></li>"
@@ -89,18 +97,33 @@ document.write("<link rel="+"stylesheet "+"type="+"text/css"+" media="+"screen"+
 +"<li><a href="+"#about"+  ">Display Options</a></li>"
 +"<li><a href="+"#about"+  ">Faq Page</a></li>"
 +"</ul>"
-+options 
-+" <br /> " 
-+ model 
-+" <br /> " 
-+ color 
-+" <br /> " 
-+ wheels 
-+" <br /> " 
-+ graphics 
-+" <br /> " 
-+ seat 
-+" <br /> $" 
++options
++" <br /> "
++" <br /> "
++ model
++" <br /> "
++" <br /> "
++ "<p> " + color + "</p>");
+console.log("Color: " + color);
+if(color == "Standard: Black & White free") {
+	console.log("made it in");
+document.write("<img src= images/BlackWhite.png width= 250 />");
+} else {
+console.log("Color: "+ color);
+document.write("<img src= images/RedYellow.png width= 250 />");
+}
+document.write(
+" <br /> "
++" <br /> "
++ wheels
++" <br /> "
++" <br /> "
++ graphics
++" <br /> "
++" <br /> "
++ seat
++" <br /> "
++" <br /> $"
 + cost
 +"</center></fieldset>");
 }

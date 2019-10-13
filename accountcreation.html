@@ -53,8 +53,12 @@ input {
 	border-radius: 50px;
 	padding-right: 15px;
 	padding-bottom: 15px;
+	width: 100%;
+	height: 100%;
 }
-
+#another-wrapper {
+position: relative;
+}
 #wrapper {
 	margin: auto;
 		margin-top: 10px;
@@ -63,7 +67,7 @@ input {
 
 form {}
 
-button.btn {
+#button {
 	margin-top: 15px;
 	background-color: #f1f1f1;
 	color: black;
@@ -76,7 +80,7 @@ button.btn {
 	text-align: center;
 }
 
-button.btn:hover {
+#button:hover {
 	background-color: #E0E0E0;
 }
 
@@ -133,6 +137,7 @@ input {
 </div>
 </div>
 <div id="wrapper-wrapper">
+	<div id="another-wrapper">
 	<h1 style="color:black">Account Registration</h1>
 	<p style="color:black">Quick and easy sign up</p>
 <form action="registration.php" method="post">
@@ -176,7 +181,12 @@ input {
 </div>
   <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="state" id="form-state"></div>
 </div>
-
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Zip Code: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="zip" id="form-zip"></div>
+</div>
 <div class="row">
 <div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
 <label>Phone Number: </label>
@@ -192,17 +202,12 @@ input {
 </div>
 
 <div class="row">
-<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
-<label>Zip Code: </label>
-</div>
-  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="zip" id="form-zip"></div>
-</div>
-<div class="row">
 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-<button class="btn">Submit Account Registration</button>
+<input class="btn" type="submit" id="button" name="submit"></input>
 </div>
 </div>
 </form>
+</div>
 		</div>
 		</div>
   </div>
@@ -210,30 +215,6 @@ input {
 </div>
 
 </div>
-
-<?php $ser="localhost";
-$user="root";
-$pass="";
-$db="electric-dddatabase";
-
-$conn = mysqli_connect($ser,$user,$pass,$db) or die("connection failed");
-if (!$conn) {
-die("Unsuccessful Login");
-} else {
-$sql = "INSERT INTO account (first_name,address,city,state,zip,phone_number,alt_phone_number)
-VALUES ('Justin','Oglesby','2023 lane drive','fort madison','IA',52627,3195610867,'')";
-}
-session_start();
-if (mysqli_query($conn, $sql)) {
-    $last_id = $conn->insert_id;
-    echo "New record created successfully. Last inserted ID is: " . $last_id;
-    $_SESSION['lastid'] = $last_id;
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-mysqli_close($conn);
-return "Success";
-?>
 <script>
     $('#effect').show();
 	 $('.login-container').show();
@@ -280,6 +261,9 @@ x[i].classList.remove("text-right");
 var y = window.matchMedia("(max-width: 800px)");
 myFunction3(y); // Call listener function at run time
 y.addListener(myFunction3); // Attach listener function on state changes
+$(document).ready(function(){
+
+});
 </script>
 	</body>
 

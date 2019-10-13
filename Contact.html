@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!--Contact.html 
+<!--Contact.html
 	Author: Robert Hannah
 	10/25/2018 -->
-	<meta charset="utf-8">	
+	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="navbar.css" />
 	<link rel="stylesheet" type="text/css" href="navbar.css" />
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,6 +13,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<?php include 'loginchecks.php'?>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;
  background: url("images/ironrun.jpg") no-repeat center center fixed;
@@ -20,7 +21,7 @@ body {font-family: Arial, Helvetica, sans-serif;
 * {box-sizing: border-box;}
 
 input[type=text].forminput, select, textarea {
-  width: 100%;
+  width: 50%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -44,7 +45,10 @@ input[type=submit]:hover {
 }
 
 .container {
+	width: 70%;
+	margin-top: 5px;
   border-radius: 10px;
+	border: 2px black inset;
   background-color: #f2f2f2;
   padding: 20px;
 }
@@ -58,13 +62,13 @@ left: 20px;
 }
 @media screen and (max-width: 1000px) {
  input#submit::before {
-  content: "\A"; 
-            white-space: pre; 
+  content: "\A";
+            white-space: pre;
  }
  p.info {
  padding-top: 15px;
  padding-right: 35px;
- 
+
  position: relative;
  }
 }
@@ -74,7 +78,7 @@ a.icon {
   right: 0px;
   top: 0x;
   color:white;
-  
+
 }
 .topnav {
 
@@ -92,7 +96,7 @@ a#droplink {
   display: block;
   margin: auto;
   display: table;
-  
+
 }
 .topnav a.icon {
   display: block;
@@ -116,12 +120,13 @@ content: "";
 <div id="Container">
 <div id="navbar">
 	<div class="login-container">
-    <form action="/action_page.php">
-      <input class="login" type="text" placeholder="Username" name="username">
-      <input class="login" type="text" placeholder="Password" name="password">
-      <button type="submit">Login</button>
-    </form>
-  </div>
+				<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
+			<form action="login.php" method="POST" id="loginform" style="display:none;">
+	      <input class="login" type="text" placeholder="Username" name="username">
+	      <input class="login" type="password" placeholder="Password" name="password">
+	      <button type="submit" id="login">Login</button>
+	    </form>
+</div>
   <div class="topnav" style="display:none">
     <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
     <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
@@ -132,6 +137,7 @@ content: "";
 	<a href="FAQ.html" id="droplink">Faq Page</a>
    <a href="modelorder.html" id="droplink">Order Here</a>
     <a href="accountcreation.html" id="droplink">Sign Up</a>
+		<a href="Modelinformation.php" id="droplink">Our Models</a>
   </div>
   </div>
 	<ul class="effect" id="effect" style="display:none">
@@ -139,6 +145,7 @@ content: "";
   <li><a href="FAQ.html">Faq Page</a></li>
   <li><a href="modelorder.html">Order Here</a></li>
    <li><a href="accountcreation.html">Sign Up</a></li>
+ <li><a href="Modelinformation.php" id="droplink">Our Models</a></li>
 </ul>
 </div>
 
@@ -150,33 +157,32 @@ content: "";
 <center>
 	<h1>Contact Us</h1>
 </center>
-<center>	
-	
+<center>
+
 	<input type="radio" name="gender" value="male"> Mr.
 	<input type="radio" name="gender" value="female"> Ms.
 	<input type="radio" name="gender" value="other"> Mrs.<br><br>
-	
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your first name..">
 
-    <label for="lname">Last Name</label>
-    <input type="text" id="fname" name="lastname" class="forminput"  placeholder="Your last name..">
+    <label for="fname">First Name</label><br>
+    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your first name.."><br>
 
-    <label for="fname">E-Mail</label>
-    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your email address..">
+    <label for="lname">Last Name</label><br>
+    <input type="text" id="fname" name="lastname" class="forminput"  placeholder="Your last name.."><br>
 
-    <label for="fname">Phone Number</label>
-    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your phone number..">
+    <label for="fname">E-Mail</label><br>
+    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your email address.."><br>
 
-    <label for="country">Prefered Contact</label>
+    <label for="fname">Phone Number</label><br>
+    <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your phone number.."><br>
+
+    <label for="country">Prefered Contact</label><br>
     <select id="country" name="country">
       <option value="email">E-Mail</option>
       <option value="text">Text</option>
       <option value="call">Call</option>
-    </select>
-
-    <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    </select><br>
+		<label for="subject">Subject</label>
+    <br><textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea><br>
 
     <input type="submit" value="Submit" class="forminput" id="submit" style="text-align: center">
 	<p class="info">1234 Walnut Street
@@ -189,8 +195,8 @@ ElectricCorp@email.com
 
 </center>
 
-		
-	
+
+
 </div> <!-- End Content-->
 </div> <!-- End Container-->
 <footer>
@@ -203,7 +209,7 @@ ElectricCorp@email.com
   if (x.style.display === "block") {
     x.style.display = "none";
 	 $('.login-container').show();
-	
+
   } else {
     x.style.display = "block";
 	x.style.textAlign = "center";

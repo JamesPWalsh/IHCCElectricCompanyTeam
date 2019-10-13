@@ -29,11 +29,16 @@ padding-bottom: 15px;
 <center>
 <div id="navbar">
 <div class="login-container">
-  <form action="/action_page.php">
-    <input class="login" type="text" placeholder="Username" name="username">
-    <input class="login" type="text" placeholder="Password" name="password">
-    <button type="submit">Login</button>
-  </form>
+  <?php if (isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == true) {
+echo "<a id='sign-out' href='#'>Sign Out&nbsp;&#10097;</a>";
+
+} else {?>
+<form action="login.php" method="POST">
+  <input class="login" type="text" placeholder="Username" name="username">
+  <input class="login" type="password" placeholder="Password" name="password">
+  <button type="submit">Login</button>
+</form>
+<?php } ?>
 </div>
 <div class="topnav" style="display:none">
   <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
@@ -45,6 +50,7 @@ padding-bottom: 15px;
  <a href="modelorder.html" id="droplink">Order Here</a>
   <a href="Contact.html" id="droplink">Contact Us</a>
   <a href="accountcreation.html" id="droplink">Sign Up</a>
+  <a href="Modelinformation.php" id="droplink">Our Models</a>
 </div>
 </div>
 <ul class="effect" id="effect" style="display:none">
@@ -52,6 +58,7 @@ padding-bottom: 15px;
 <li><a href="modelorder.html">Order Here</a></li>
  <li><a href="Contact.html">Contact Us</a></li>
  <li><a href="accountcreation.html" id="droplink">Sign Up</a></li>
+ <li><a href="Modelinformation.php" id="droplink">Our Models</a></li>
 </ul>
 </div>
 </center>
