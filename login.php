@@ -13,7 +13,7 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<?php include 'loginchecks.php'?>
+<?php include 'loginchecks.php' ?>
 	</head>
 	<style>
 	body {
@@ -64,7 +64,7 @@ position: relative;
 }
 #wrapper {
 	margin: auto;
-		margin-top: 10px;
+	margin-top: 10px;
 	width: 80%;
 }
 
@@ -155,55 +155,58 @@ a#sign-out {
 <div id="wrapper-wrapper">
 	<div id="another-wrapper">
 		<?php
-		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$username = trim($_POST["username"]);
-			$password = trim($_POST["password"]);
-		$ser="localhost";
-		$user="root";
-		$pass="";
-		$db="electric-database";
-
-		$conn = mysqli_connect($ser,$user,$pass,$db) or die("connection failed");
-		if (!$conn) {
-		die("Unsuccessful Login");
-		}
-		$sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, admin p where a.user_id = p.user_id
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+    $ser = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "electric-database";
+    $conn = mysqli_connect($ser, $user, $pass, $db) or die("connection failed");
+    if (!$conn) {
+        die("Unsuccessful Login");
+    }
+		$test = '</script><script language="javascript">$(document).ready(function(){$("#loginform").hide();$("#sign-out").show();});</script>';
+		$successpart1 = "<h2 style='margin-bottom: 100px;'>Thank you for logging in ";
+		$successpart2 = "</h2><p style='margin-bottom: 250px;'>Please wait until we release more features that make being logged in actually useful.</p>
+		<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>
+		<p>We here at P2T2 are very sorry for the inconveinance</p>";
+    $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, cust_account_info p where a.user_id = p.user_id
 		and a.email = '$username' and p.password = '$password'";
-		$result = $conn->query($sql);
-		if ($result->num_rows == 1) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$success =
-				"<h2 style='margin-bottom: 100px;'>Thank you for logging in ".$row["first_name"]." ".$row["last_name"]."</h2>
-				<p style='margin-bottom: 250px;'>Please wait until we release more features that make being logged in actually useful.</p>
-				<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>
-				<p>We here at P2T2 are very sorry for the inconveinance</p>";
-					echo $success;
-					$_SESSION['username'] = $username;
-					echo '</script>';
-					echo '<script language="javascript">';
-					echo '$(document).ready(function(){';
-					echo '$("#loginform").hide();';
-					echo '$("#sign-out").show();';
-					echo '	});';
-					echo '</script>';
-			}
-
-		} else {
-		$incorrect = "<h3 style='margin-bottom: 350px;margin-top:55px;'>Invalid login please re-enter your email and password.</h3>
-		<p>If you have not created an account yet you can sign up by clicking <a href='accountcreation.php'>here</a>";
-		echo $incorrect;
-		}
-		mysqli_close($conn);
-		return "Success";
-		}
-		?>
-		<?php   if (isset($_GET['signout'])) {
-				$logout = "<h3 style='margin-bottom: 300px;margin-top:55px;'>You have successfully logged out.</h3>
+    $result = $conn->query($sql);
+    if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+        echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
+        $_SESSION['username'] = $username;
+        echo $test;
+    } else {
+        $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, admin p where a.user_id = p.user_id
+				and a.email = '$username' and p.password = '$password'";
+        $result = $conn->query($sql);
+        if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+            echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
+            $_SESSION['username'] = $username;
+            echo $test;
+        } else {
+            $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, employee p where a.user_id = p.user_id
+						and a.email = '$username' and p.password = '$password'";
+            $result = $conn->query($sql);
+            if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+              	echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
+                $_SESSION['username'] = $username;
+                echo $test;
+            }
+            mysqli_close($conn);
+            return "Success";
+        }
+    }
+}
+?>
+		<?php if (isset($_GET['signout'])) {
+    $logout = "<h3 style='margin-bottom: 300px;margin-top:55px;'>You have successfully logged out.</h3>
 				<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>";
-				echo $logout;
-		  }
-			?>
+    echo $logout;
+}
+?>
 </div>
 		</div>
 		</div>
@@ -213,29 +216,29 @@ a#sign-out {
 
 </div>
 <script>
-    $('#effect').show();
-	 $('.login-container').show();
-	$('.topnav').hide();
+$('#effect').show();
+$('.login-container').show();
+$('.topnav').hide();
  function myFunction() {
   var x = document.getElementById("myLinks");
   if (x.style.display === "block") {
     x.style.display = "none";
-	 $('.login-container').show();
+		$('.login-container').show();
 
   } else {
     x.style.display = "block";
-	x.style.textAlign = "center";
+		x.style.textAlign = "center";
 
   }
 }
 function myFunction2(x) {
   if (x.matches) { // If media query matches
      $('#effect').hide();
-	$('.topnav').show();
+		 $('.topnav').show();
   } else {
   $('.login-container').show();
     $('#effect').show();
-	$('.topnav').hide();
+		$('.topnav').hide();
   }
 }
 
@@ -244,11 +247,11 @@ myFunction(x); // Call listener function at run time;
 x.addListener(myFunction2); // Attach listener function on state changes
 
 function myFunction3(y) {
-	var x = document.getElementsByName("label");
+var x = document.getElementsByName("label");
 var i;
 for (i = 0; i < x.length; i++) {
 	if (y.matches) { // If media query matches
-x[i].classList.remove("text-right");
+		x[i].classList.remove("text-right");
   } else {
 		x[i].classList.add("text-right");
   }
