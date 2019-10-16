@@ -19,6 +19,7 @@ body {
 div#background-box {
 background-color: rgba(0,0,0,0.5);
 padding-bottom: 15px;
+text-shadow: 2px 2px 4px #000000;
 }
 </style>
 

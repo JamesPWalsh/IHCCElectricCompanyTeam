@@ -21,9 +21,10 @@
 			//$('#orderdisplay').show();
 			//});
 			//});
-
+			function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 			function getValues() {
-
 				var modelValue = document.getElementById("model");
 				var displayModel = modelValue.options[modelValue.selectedIndex].text;
 				document.getElementById("txtModel").value=displayModel;
@@ -84,11 +85,12 @@
 				if(displayGraphics == "Yes (+ $350)") {
 					total = total + 350;
 				}
-
+				total = numberWithCommas(total);
+				base = numberWithCommas(base);
 				document.getElementById("txtTotal").value="$"+total;
 
 				document.getElementById("txtBase").value="$"+base;
-
+				localStorage.setItem("total", total);
 				}
 
 		function myFunction()
@@ -101,6 +103,7 @@
 		$('#orderdisplay').hide();
 		$("#ordersubmit").click(function(){
 		$('#orderdisplay').show();
+		$('#placeorder').show();
 		});
 		});
 		</script>
@@ -252,11 +255,9 @@
 		  </a>
 
 		<div id="myLinks">
-			<a class="Active" href="ModelInformation.html">Model Information</a>
-		  <a class="Active" href="Contentdisplay.html">Content Display</a>
+			<a class="Active" href="ModelInformation.php">Our Models</a>
 		  <a class="Active" href="About.php">About Us</a>
 		  <a href="Contact.php">Contact Us</a></li>
-		  <a href="Display.php">Display Options</a>
 		  <a href="FAQ.php">Faq Page</a>
 
 
@@ -264,19 +265,15 @@
 		</div>
 		</div>
 		<ul class="effect" id="effect" style="display:none">
-			<li><a class="Active" href="ModelInformation.html">Model Information</a></li>
-		  <li><a class="Active" href="Contentdisplay.html">Content Display</a></li>
+			<li><a class="Active" href="ModelInformation.php">Our Models</a></li>
 		  <li><a class="Active" href="About.php">About Us</a></li>
 		  <li><a href="Contact.php">Contact Us</a></li>
-		  <li><a href="Display.php">Display Options</a></li>
 		  <li><a href="FAQ.php">Faq Page</a></li>
 		</ul>
 		</div>
 	</head>
 
 	<body>
-
-		<h1>Order Here!</h1>
 
 		<div id="selection">
 		<h3>Order Selection</h3>
@@ -367,7 +364,9 @@
 				<input type="text" id="txtBase" class="totaldisplay" placeholder="N/A" disabled/><br>
 				<label>Total:</label><br>
 				<input type="text" id="txtTotal" class="totaldisplay" placeholder="N/A" disabled/><br>
-				<button class="place" id="finish">Place Order</button>
+				<form id="placeorder" action="order.php" style="display:none">
+    <button class="place" id="finish" type="submit">Place Order</button>
+</form>
 			</div>
 		</div>
 			<script src="resize.js"></script>

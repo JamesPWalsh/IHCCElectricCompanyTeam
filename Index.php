@@ -135,9 +135,25 @@ font-size: 10px;
 width: 255px;
 border: 1px solid black;
 }
+div#contest {
+  position: absolute;
+     bottom: 0;  /* position the top  edge of the element at the middle of the parent */
+     left: 50%; /* position the left edge of the element at the middle of the parent */
+
+     transform: translate(-50%, -10%); /* This is a shorthand of
+                                          translateX(-50%) and translateY(-50%) */
+  background-color: #D8D8D8;
+  border: 3px inset white;
+  border-radius: 15px;
+  padding: 10px;
+}
 </style>
 </head>
 <body>
+  <div id="contest">
+<h3 style="color:black;">Enter our contest to win a free helmet!</h3><br>
+<button style="display: block;margin: 0 auto;background-color:#333;color: white;padding: 10px;  border-radius: 15px;">Lets Go!</button>
+  </div>
 <!--
 <div class="slideshow-container">
 

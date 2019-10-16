@@ -151,8 +151,8 @@ margin: 0 auto;
 </div>
 <div id="wrapper-wrapper">
 	<div id="another-wrapper">
-	<h1 style="color:black;text-shadow: 1px 1px 3px gray;">Account Registration</h1>
-	<p style="color:black">Quick and easy sign up</p>
+	<h1 style="color:black;text-shadow: 1px 1px 3px gray;">Account Information</h1>
+	<p style="color:black">Edit Account Information</p>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
 <div class="row">
 <div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">

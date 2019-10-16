@@ -30,23 +30,30 @@
 </a>
 
 <div id="myLinks">
-<a href="datamaintainence.html">Data Maintainence</a>
+<a href="datamaintainence.php">Data Maintainence</a>
 </div>
 </div>
 <ul class="effect" id="effect" style="display:none">
-  <li><a class="Active" href="datamaintainence.html">Data Maintainence</a></li>
+  <li><a class="Active" href="datamaintainence.php">Data Maintainence</a></li>
 </ul>
 </div>
 	<h1>Admin Control Panel</h1>
-	<label>Search Admin/Employee ID: </label><input type="text" name="username" id="form-name"><br>
-	<button type="submit">Search</button><br>
-	<label>Results: </label><br><br>
-	<p>Stuff below shows up if id comes back with results whether it's admin or an employee id. Leave blank for no change</p>
-		<label style="margin-right: 78px;">Change Admin ID: </label><input type="text" name="username" id="form-name"><br>
-		<label style="margin-right: 24px;">Change Admin Password: </label><input type="text" name="username" id="form-name"><br>
-		<label style="margin-right: 54px;">Change Employee ID: </label><input type="text" name="username" id="form-name"><br>
-		<label>Change Employee Password: </label><input type="text" name="username" id="form-name"><br>
-		<button type="submit">Submit</button>
+	<label>Search Admin/Employee ID: </label><input type="text" name="id" id="form-id"><br>
+	<button id="search">Search</button><br>
+	<label id="results">Results: </label><div id="results"></div><br><br>
+<div id="adminchange" style="display:none;">
+		<label style="margin-right: 78px;">Change Admin ID: </label><input type="text" name="username" id="form-admin-id"><br>
+		<label style="margin-right: 24px;">Change Admin Password: </label><input type="text" name="username" id="form-admin-pass"><br>
+		<button id="adminchanges">Submit</button>
+</div>
+<div id="employeechange" style="display:none;">
+		<label style="margin-right: 54px;">Change Employee ID: </label><input type="text" name="username" id="form-emp-id"><br>
+		<label>Change Employee Password: </label><input type="text" name="username" id="form-emp-pass"><br>
+		<button id="employeechanges">Submit</button>
+</div>
+		<div id="success">
+
+		</div>
 		<!--database call to validate then insert record into table then generate customer id -->
 		<?php
 $ser="localhost";
@@ -89,6 +96,68 @@ $('.topnav').hide();
 var x = window.matchMedia("(max-width: 900px)");
 myFunction(x); // Call listener function at run time;
 x.addListener(myFunction2); // Attach listener function on state changes
+$(document).ready(function() {
+    $('button#search').click(function () {
+      var id = $('#form-id').val();
+			console.log("ID: " + id);
+      $.ajax({
+        type:"GET",
+        cache:false,
+        url:"adminsearch.php",
+        data:{id:id},    // multiple data sent using ajax
+        success: function (html) {
+					$('div#results').html((html));
+					var result = html.charAt(0);
+										if(result == 'A'){
+											$('div#employeechange').hide();
+										$('div#adminchange').show();
+									}else if (result == 'E'){
+										$('div#adminchange').hide();
+											$('div#employeechange').show();
+					}
+        }
+      });
+			$('div#employeechange').hide();
+			$('div#adminchange').hide();
+      return false;
+    });
+		$('button#adminchanges').click(function () {
+			var id = $('#form-id').val();
+			var adminid = $('#form-admin-id').val();
+			var adminpass = $('#form-admin-pass').val();
+			console.log("ID: " + id);
+			$.ajax({
+				type:"GET",
+				cache:false,
+				url:"adminchange.php",
+				data:{id:id,adminid:adminid,adminpass:adminpass},    // multiple data sent using ajax
+				success: function (html) {
+					$('div#success').append(html);
+				}
+			});
+			console.log("failure");
+			return false;
+		});
+		$('button#employeechanges').click(function () {
+			var id = $('#form-id').val();
+			var empid = $('#form-emp-id').val();
+			var emppass = $('#form-emp-pass').val();
+			console.log("ID: " + id);
+			$.ajax({
+				type:"GET",
+				cache:false,
+				url:"employeechange.php",
+				data:{id:id,empid:empid,emppass:emppass},    // multiple data sent using ajax
+				success: function (html) {
+					$('div#success').append(html);
+				}
+			});
+			console.log("failure");
+			return false;
+		});
+  });
+
 </script>
+
 	</body>
 </html>

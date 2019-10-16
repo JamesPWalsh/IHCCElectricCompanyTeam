@@ -199,7 +199,8 @@ a#sign-out {
 		}
 		?>
 		<?php   if (isset($_GET['signout'])) {
-				$logout = "<h3 style='margin-bottom: 350px;margin-top:55px;'>You have successfully logged out.</h3>";
+				$logout = "<h3 style='margin-bottom: 300px;margin-top:55px;'>You have successfully logged out.</h3>
+				<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>";
 				echo $logout;
 		  }
 			?>

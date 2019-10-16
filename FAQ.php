@@ -26,7 +26,9 @@ background-color: rgb(0,0,0,.2);
 color:white;
 margin-left: auto;
 margin-right: auto;
-font-size: 15px;
+padding-bottom: 45px;
+font-size: 25px;
+text-shadow: 2px 2px 4px #000000;
 }
 center#second {
 	position: relative;
@@ -53,7 +55,8 @@ center#second {
   </a>
 
 <div id="myLinks">
-<a class="active" href="About.html" id="droplink">About Us</a>
+	<a class="active" href="Index.php" id="droplink">Homepage</a>
+<a class="active" href="About.php" id="droplink">About Us</a>
  <a href="modelorder.php" id="droplink">Order Here</a>
   <a href="Contact.php" id="droplink">Contact Us</a>
   <a href="accountcreation.php" id="droplink">Sign Up</a>
@@ -61,7 +64,8 @@ center#second {
 </div>
 </div>
 <ul class="effect" id="effect" style="display:none">
-	<li><a class="active" href="About.html">About Us</a></li>
+	<li><a class="active" href="Index.php" id="droplink">Homepage</a></li>
+	<li><a class="active" href="About.php">About Us</a></li>
 <li><a href="modelorder.php">Order Here</a></li>
  <li><a href="Contact.php">Contact Us</a></li>
  <li><a href="accountcreation.php" id="droplink">Sign Up</a></li>

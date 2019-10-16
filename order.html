@@ -4,8 +4,15 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Checkout</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+	  <!-- Latest compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	  <!-- jQuery library -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <!-- Latest compiled JavaScript -->
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <?php include 'loginchecks.php'?>
 		<script src="jquery-3.4.1.min.js"></script>
 		<script>
 		$( document ).ready(function() {
@@ -27,7 +34,36 @@
 		}
 		</script>
 
-		
+		<div id="navbar">
+		<div class="login-container">
+					<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
+				<form action="login.php" method="POST" id="loginform" style="display:none;">
+		      <input class="login" type="text" placeholder="Username" name="username">
+		      <input class="login" type="password" placeholder="Password" name="password">
+		      <button type="submit" id="login">Login</button>
+		    </form>
+	</div>
+	<div class="topnav" style="display:none">
+	  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
+	  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
+	  </a>
+
+	<div id="myLinks">
+	<a href="FAQ.php" id="droplink">Faq Page</a>
+	 <a href="modelorder.html" id="droplink">Order Here</a>
+	  <a href="Contact.php" id="droplink">Contact Us</a>
+	  <a href="accountcreation.php" id="signup">Sign Up</a>
+	  <a href="Modelinformation.php" id="droplink">Our Models</a>
+	</div>
+	</div>
+	<ul class="effect" id="effect" style="display:none">
+	<li><a href="FAQ.php">Faq Page</a></li>
+	<li><a href="modelorder.php">Order Here</a></li>
+	 <li><a href="Contact.php">Contact Us</a></li>
+	 <li><a href="accountcreation.php" id="signup">Sign Up</a></li>
+	 <li><a href="Modelinformation.php" id="droplink">Our Models</a></li>
+	</ul>
+	</div>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;
  background: url("images/ironrun.jpg") no-repeat center center fixed;
@@ -67,16 +103,7 @@ input[type=submit]:hover {
 
 	</head>
 	<body>
-		<ul id="navbar">
-		  <li><a class="Active" href="ModelInformation.html">Model Information</a></li>
-		  <li><a class="Active" href="Contentdisplay.html">Content Display</a></li>
-		  <li><a class="Active" href="About.html">About Us</a></li>
-		  <li><a href="Contact.html">Contact Us</a></li>
-		  <li><a href="ModelInformation.html">Model Information</a></li>
-		  <li><a href="Display.html">Display Options</a></li>
-		  <li><a href="FAQ.html">Faq Page</a></li>
-		</ul>
-		
+
 <div id="content">
 
 <div class="container">
@@ -85,8 +112,8 @@ input[type=submit]:hover {
 <center>
 	<h1>Checkout</h1>
 </center>
-<center>	
-	
+<center>
+
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -98,7 +125,7 @@ input[type=submit]:hover {
 
     <label for="fname">State</label>
     <input type="text" id="fname" name="firstname">
-	
+
 	<label for="fname">ZIP</label>
     <input type="text" id="fname" name="firstname">
 
@@ -121,6 +148,6 @@ input[type=submit]:hover {
 
 </center>
 
-
+<script src="resize.js"></script>
 	</body>
 </html>
