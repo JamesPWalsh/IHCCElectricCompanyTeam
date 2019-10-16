@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Creating a Responsive Web Design</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+		<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<style>
+	body {
+	margin: 0;
+	background: url("images/bg2.jpg") no-repeat center center fixed;
+	filter: grayscale(50%);
+	background-color: #cccccc;
+	background-size: cover;
+}
+
+h1,
+p,
+button {
+	text-align: center;
+}
+input
+input[type=text].form,
+select {
+	padding: 12px 10px;
+	margin: auto 0;
+	margin-bottom: 15px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button {
+	border-radius: 4px;
+}
+
+label,
+input {
+	margin-top: 6px;
+}
+
+#wrapper-wrapper {
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 50px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+}
+
+#wrapper {
+	margin: auto;
+		margin-top: 10px;
+	width: 50%;
+}
+
+form {}
+
+#button {
+	margin-top: 15px;
+	background-color: #f1f1f1;
+	color: black;
+	font-size: 16px;
+	padding: 16px 30px;
+	border: none;
+	cursor: pointer;
+	border: 1.5px solid black;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#button:hover {
+	background-color: #E0E0E0;
+}
+
+div.center {
+	margin: auto;
+	width: 50%;
+}
+#content {
+
+}
+input {
+
+}
+		</style>
+	<body>
+	<div id="navbar">
+	<div class="login-container">
+    <form action="/action_page.php">
+      <input class="login" type="text" placeholder="Username" name="username">
+      <input class="login" type="text" placeholder="Password" name="password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  <div class="topnav" style="display:none">
+    <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
+    <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
+	  </a>
+
+	<div id="myLinks">
+    <a href="About.html" id="droplink">About Us</a>
+	<a href="FAQ.html" id="droplink">Faq Page</a>
+   <a href="modelorder.html" id="droplink">Order Here</a>
+    <a href="Contact.html" id="droplink">Contact Us</a>
+  </div>
+  </div>
+	<ul class="effect" id="effect" style="display:none">
+	<li><a href="About.html">About Us</a></li>
+  <li><a href="FAQ.html">Faq Page</a></li>
+  <li><a href="modelorder.html">Order Here</a></li>
+   <li><a href="Contact.html">Contact Us</a></li>
+</ul>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8"></div>
+<div id="wrapper">
+  <div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+	<div id="content">
+
+</div>
+</div>
+</div>
+<div id="wrapper-wrapper">
+	<div id="another-wrapper">
+	<h1 style="color:black">Account Registration</h1>
+	<p style="color:black">Quick and easy sign up</p>
+<form method="post">
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>First Name: </label>
+</div>
+  <div class="col-sm-3 col-md-7 col-lg-7"><input class="form" type="text" name="firstname" id="form-firstname"/></div>
+</div>
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Last Name: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="lastname" id="form-lastname" width="400px"/></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Password: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="password" id="form-password"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Street Address: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="address" id="form-address"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>City: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="city" id="form-city"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>State: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="state" id="form-state"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Phone Number: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="number" id="form-number"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Alt. Phone Number: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="alt-number" id="form-alt-number"></div>
+</div>
+
+<div class="row">
+<div id="label" name="label" class="col-sm-5 col-md-5 col-lg-5 text-right">
+<label>Zip Code: </label>
+</div>
+  <div class="col-sm-7 col-md-7 col-lg-7"><input class="form" type="text" name="zip" id="form-zip"></div>
+</div>
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+<input class="btn" type="submit" id="button" name="submit"></input>
+</div>
+</div>
+</form>
+</div>
+		</div>
+		</div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+</div>
+
+<?php $ser="localhost";
+$user="root";
+$pass="";
+$db="electric-dddatabase";
+
+$conn = mysqli_connect($ser,$user,$pass,$db) or die("connection failed");
+if (!$conn) {
+die("Unsuccessful Login");
+} else {
+$sql = "INSERT INTO account (first_name,address,city,state,zip,phone_number,alt_phone_number)
+VALUES ('Justin','Oglesby','2023 lane drive','fort madison','IA',52627,3195610867,'')";
+}
+session_start();
+if (mysqli_query($conn, $sql)) {
+    $last_id = $conn->insert_id;
+    echo "New record created successfully. Last inserted ID is: " . $last_id;
+    $_SESSION['lastid'] = $last_id;
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+mysqli_close($conn);
+return "Success";
+?>
+<script>
+    $('#effect').show();
+	 $('.login-container').show();
+	$('.topnav').hide();
+ function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+	 $('.login-container').show();
+
+  } else {
+    x.style.display = "block";
+	x.style.textAlign = "center";
+
+  }
+}
+function myFunction2(x) {
+  if (x.matches) { // If media query matches
+     $('#effect').hide();
+	$('.topnav').show();
+  } else {
+  $('.login-container').show();
+    $('#effect').show();
+	$('.topnav').hide();
+  }
+}
+
+var x = window.matchMedia("(max-width: 900px)");
+myFunction(x); // Call listener function at run time;
+x.addListener(myFunction2); // Attach listener function on state changes
+
+function myFunction3(y) {
+	var x = document.getElementsByName("label");
+var i;
+for (i = 0; i < x.length; i++) {
+	if (y.matches) { // If media query matches
+x[i].classList.remove("text-right");
+  } else {
+		x[i].classList.add("text-right");
+  }
+}
+}
+
+var y = window.matchMedia("(max-width: 800px)");
+myFunction3(y); // Call listener function at run time
+y.addListener(myFunction3); // Attach listener function on state changes
+$(document).ready(function(){
+  $("#button").click(function(){
+  //  $("#another-wrapper").animate({left: '250px'});
+  });
+});
+</script>
+	</body>
+
+</html>

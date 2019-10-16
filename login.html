@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Creating a Responsive Web Design</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
+	</head>
+	<body>
+		<ul id="navbar">
+  <li><a class="active" href="About.html">About Us</a></li>
+  <li><a href="Contact.html">Contact Us</a></li>
+  <li><a href="Modelinformation.html">Model Information</a></li>
+  <li><a href="modelorder.html">Order Here</a></li>
+   <li><a href="FAQ.html">Faq Page</a></li>
+   <li><a href="accountcreation.html">Sign Up</a></li>
+</ul>
+	<h1>Login Form</h1>
+		<label>Username: </label><input type="text" name="username" id="form-name"><br>
+		<label>Password:&nbsp;&nbsp;</label><input type="text" name="username" id="form-name"><br>
+		<button type="submit">Submit</button>
+		<p>Login will distinguish between employee login and customer login</p>
+		<!--database call to validate then insert record into table then generate customer id -->
+		<?php 
+$ser="localhost";
+$user="root";
+$pass="";
+$db="firstsprintdb";
+
+$conn = mysqli_connect($ser,$user,$pass,$db) or die("connection failed");
+if (!$conn) {
+    die("Connection failed: ");
+}
+?>
+	</body>
+</html>
