@@ -8,16 +8,33 @@
 
 }
 * {
-	font-family: "Times New Roman", Times, serif;
+	font-family: Arial, Helvetica, sans-serif;
 }
+
 #navbar > ul {
 	list-style-type: none;
 }
 #navbar > ul > li{
   float: right;
 }
-.login-container {
+div.login-container {
+  height: 51.8px;
 	float:left;
+}
+a#sign-out {
+  text-decoration:none;
+  font-size: 17px;
+  position: relative;
+  top: 13px;
+  left: 15px;
+	color:white;
+
+}
+a#sign-out:hover {
+text-decoration:none;
+color:	#FFD700;
+-webkit-filter: sepia(70%); /* Safari 6.0 - 9.0 */
+filter: sepia(70%);
 }
 #navbar > ul > li a {
   display: inline-block;
