@@ -308,6 +308,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$alt_phone_num = $_POST["alt-number"] or '';
 		$zip = $_POST["zip"];
 		$username = trim($_POST["username"]);
+		$username = strtolower($username);
 		?>
 		<?php
 	$ser="localhost";

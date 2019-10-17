@@ -1,0 +1,11 @@
+$sql = "SELECT i.description, ot.order_id, a.first_name FROM inventory i, order_items oi, orders_track ot, account a
+WHERE i.item_id = oi.item_id and oi.order_id = ot.order_id and ot.user_id = a.user_id and ot.order_id = 2";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+      echo "description: " . $row["description"]. " - order id : " . $row["order_id"]. " First Name: " . $row["first_name"]. "<br>";
+  }
+} else {
+  echo "0 results";
+ }

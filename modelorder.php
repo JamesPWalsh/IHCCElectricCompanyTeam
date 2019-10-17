@@ -4,7 +4,6 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Order Selection Page</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
 		<script src="jquery-3.4.1.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -100,11 +99,106 @@
 		</script>
 		<script>
 		$( document ).ready(function() {
+		var model_itemid = 0;
+		var color_itemid = 0;
+		var wheels_itemid = 0;
+		var graphics_itemid = 0;
+		var seat_itemid = 0;
 		$('#orderdisplay').hide();
 		$("#ordersubmit").click(function(){
 		$('#orderdisplay').show();
 		$('#placeorder').show();
+		model_itemid = changeValueForDB($('#txtModel').val());
+		color_itemid = changeValueForDB($('#txtColor').val());
+		wheels_itemid = changeValueForDB($('#txtWheels').val() + " " + $('#txtPremium').val());
+		graphics_itemid = changeValueForDB($('#txtGraphics').val());
+		seat_itemid = changeValueForDB($('#txtSeat').val());
+		console.log("you will need items " + model_itemid + "," + color_itemid + "," + wheels_itemid + "," + graphics_itemid + "," + seat_itemid);
 		});
+		$("button#finish").click(function(){
+			$.ajax({
+				type:"POST",
+				cache:false,
+				url:"orderinserts.php",
+				data:{
+					model:model_itemid,
+					color:color_itemid,
+					wheels:wheels_itemid,
+					graphics:graphics_itemid,
+					seat:seat_itemid
+				},    // multiple data sent using ajax
+				success: function (html) {
+					console.log("success");
+					$('div#teste').html(html);
+				}
+			});
+			console.log("failure");
+			return false;
+		});
+		function changeValueForDB(input) {
+			var items = {
+				item1: {
+					itemid:1,
+					description:'Lightning (96v)'
+				},
+				item2: {
+					itemid:2,
+					description:'Sparkle (48v)'
+				},
+				item3: {
+					itemid:3,
+					description:'Thunder (192v)'
+				},
+				item4: {
+					itemid:4,
+					description:'Firefly (24v)'
+				},
+				item5: {
+					itemid:5,
+					description:'Black & White'
+				},
+				item6: {
+					itemid:6,
+					description:'Yellow & Red (+ $250)'
+				},
+				item7: {
+					itemid:7,
+					description:'Yes (+ $350)'
+				},
+				item8: {
+					itemid:8,
+					description:'18 Inch No (No additional charge)'
+				},
+				item9: {
+					itemid:9,
+					description:'19 Inch No (No additional charge)'
+				},
+				item10: {
+					itemid:10,
+					description:'18 Inch Yes (+ $100)'
+				},
+				item11: {
+					itemid:11,
+					description:'19 Inch Yes (+ $100)'
+				},
+				item12: {
+					itemid:12,
+					description:'Solo'
+				},
+				item13: {
+					itemid:13,
+					description:'Standard'
+				}
+				};
+				var keys = Object.keys(items);
+				for (var key in items) {
+					if (Object.values(items[key]).indexOf(input) > -1) {
+						var id = items[key].itemid;
+						return id;
+					} else {
+					}
+				}
+		}
 		});
 		</script>
 
@@ -307,8 +401,8 @@
 			<li>
 				<label>Wheels: </label><br>
 				<select id = "wheels">
-					<option value="18">18"</option>
-					<option value="19">19"</option>
+					<option value="18">18 Inch</option>
+					<option value="19">19 Inch</option>
 				</select>
 			</li>
 			<li>
@@ -358,15 +452,15 @@
 		</div>
 
 		<div id="totalDisplay" style="margin-bottom: 50px;">
-			<h4>Total Information</h4>
+			<h4 id="teststring">Total Information</h4>
 			<div id="totalContent">
 				<label>Base Price:</label><br>
 				<input type="text" id="txtBase" class="totaldisplay" placeholder="N/A" disabled/><br>
 				<label>Total:</label><br>
 				<input type="text" id="txtTotal" class="totaldisplay" placeholder="N/A" disabled/><br>
-				<form id="placeorder" action="order.php" style="display:none">
     <button class="place" id="finish" type="submit">Place Order</button>
-</form>
+		<div id="teste">
+		</div>
 			</div>
 		</div>
 			<script src="resize.js"></script>

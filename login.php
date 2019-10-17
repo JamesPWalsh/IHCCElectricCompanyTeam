@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html>
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,6 +154,41 @@ a#sign-out {
 <div id="wrapper-wrapper">
 	<div id="another-wrapper">
 		<?php
+		function testLogin($conn,$username,$password) {
+			$changelogged = '</script><script language="javascript">$(document).ready(function(){$("#loginform").hide();$("#sign-out").show();});</script>';
+			$successpart1 = "<h2 style='margin-bottom: 100px;'>Thank you for logging in ";
+			$successpart2 = "</h2><p style='margin-bottom: 250px;'>Please wait until we release more features that make being logged in actually useful.</p>
+			<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>
+			<p>We here at P2T2 are very sorry for the inconveinance</p>";
+	    $sql = "SELECT a.email,p.password,a.first_name,a.last_name,a.user_id from account a, cust_account_info p where a.user_id = p.user_id
+			and a.email = '$username' and p.password = '$password'";
+	    $result = $conn->query($sql);
+	    if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+	        $_SESSION['username'] = $username;
+					$_SESSION['user_id'] = $row['user_id'];
+					return $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2 . $changelogged;
+	    } else {
+	        $sql = "SELECT a.email,p.password,a.first_name,a.last_name,a.user_id from account a, admin p where a.user_id = p.user_id
+					and a.email = '$username' and p.password = '$password'";
+	        $result = $conn->query($sql);
+	        if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+	            $_SESSION['username'] = $username;
+							$_SESSION['user_id'] = $row['user_id'];
+	            return $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2 . $changelogged;
+	        } else {
+	            $sql = "SELECT a.email,p.password,a.first_name,a.last_name,a.user_id from account a, employee p where a.user_id = p.user_id
+							and a.email = '$username' and p.password = '$password'";
+	            $result = $conn->query($sql);
+	            if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
+	                $_SESSION['username'] = $username;
+									$_SESSION['user_id'] = $row['user_id'];
+	                return $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2 . $changelogged;
+	            }
+	            return "";
+	        }
+	    }
+		}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
@@ -166,39 +200,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$conn) {
         die("Unsuccessful Login");
     }
-		$test = '</script><script language="javascript">$(document).ready(function(){$("#loginform").hide();$("#sign-out").show();});</script>';
-		$successpart1 = "<h2 style='margin-bottom: 100px;'>Thank you for logging in ";
-		$successpart2 = "</h2><p style='margin-bottom: 250px;'>Please wait until we release more features that make being logged in actually useful.</p>
-		<img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto;'/>
-		<p>We here at P2T2 are very sorry for the inconveinance</p>";
-    $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, cust_account_info p where a.user_id = p.user_id
-		and a.email = '$username' and p.password = '$password'";
-    $result = $conn->query($sql);
-    if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
-        echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
-        $_SESSION['username'] = $username;
-        echo $test;
-    } else {
-        $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, admin p where a.user_id = p.user_id
-				and a.email = '$username' and p.password = '$password'";
-        $result = $conn->query($sql);
-        if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
-            echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
-            $_SESSION['username'] = $username;
-            echo $test;
-        } else {
-            $sql = "SELECT a.email,p.password,a.first_name,a.last_name from account a, employee p where a.user_id = p.user_id
-						and a.email = '$username' and p.password = '$password'";
-            $result = $conn->query($sql);
-            if ($result->num_rows == 1) while ($row = $result->fetch_assoc()) {
-              	echo $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2;
-                $_SESSION['username'] = $username;
-                echo $test;
-            }
-            mysqli_close($conn);
-            return "Success";
-        }
-    }
+		$loginstring = testLogin($conn,$username,$password);
+		echo $loginstring;
+		mysqli_close($conn);
 }
 ?>
 		<?php if (isset($_GET['signout'])) {
