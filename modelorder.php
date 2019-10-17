@@ -112,6 +112,7 @@
 		color_itemid = changeValueForDB($('#txtColor').val());
 		wheels_itemid = changeValueForDB($('#txtWheels').val() + " " + $('#txtPremium').val());
 		graphics_itemid = changeValueForDB($('#txtGraphics').val());
+		if(graphics_itemid == undefined) graphics_itemid = 0;
 		seat_itemid = changeValueForDB($('#txtSeat').val());
 		console.log("you will need items " + model_itemid + "," + color_itemid + "," + wheels_itemid + "," + graphics_itemid + "," + seat_itemid);
 		});

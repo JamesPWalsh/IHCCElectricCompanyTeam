@@ -6,12 +6,7 @@ include('accountstuff.php');
    $color = $_POST["color"];
    $wheels = $_POST["wheels"];
    $last_id = '';
-   if (isset($_POST['graphic'])) {
-      $graphic = $_POST["graphic"];
-   }else{
-     $graphic = 'none';
-   }
-   if($graphic) {}else{$graphic = 'none';}
+   $graphic = $_POST["graphics"];
    if (!isset($_SESSION))session_start();
    if (isset($_SESSION['user_id'])) {
      $user = $_SESSION['user_id'];
@@ -47,7 +42,7 @@ include('accountstuff.php');
     echo "not success";
   }
   }
-  if (isset($_POST['graphic'])) {
+  if ($graphic != 0) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$graphic,1)";
   if ($conn->query($sql) === TRUE) {
   } else {
