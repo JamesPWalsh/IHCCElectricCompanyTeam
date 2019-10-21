@@ -94,56 +94,61 @@
 </ul>
 </div>
 		
-			<div id="order">
-	<h1>Cart</h1>
-	<div id="clean">
-	<ul>
-		<li><label>Model: </label><select>
-  <option value="volvo">Lightning (96v)</option>
-  <option value="saab">Sparkle (48v)</option>
-  <option value="volvo">Thunder (192V)</option>
-  <option value="saab">Firefly (24v)</option>
-  
-</select></li>
-
-<li><label>Color: </label>
-	<select>
-		<option value="volvo">Black & White</option>
-	    <option value="saab">Yellow & Red (Prem. $+250)</option>
-	</select>
-</li>
-  
-<li><label>     Performance Graphics Add-on(+$350) </label>
-	<fieldset id="group1">
-		<input type="radio" value="male" name="group1" checked>Yes
-		<input type="radio" value="female" name="group1">No
-	</fieldset>
-</li>  
-  
-<li><label>Wheels: </label>
-<select>
-  <option value="volvo">18"</option>
-  <option value="saab">19"</option>
-</select>
-</li>
-
-<li><label>     Premium Wheels(+$100) </label>
-	<fieldset id="group2">
-		<input type="radio" value="male" name="group2" checked>Yes
-		<input type="radio" value="female" name="group2">No
-	</fieldset>
-</li>
-
-<li><label>Seat Type: </label><select>
-  <option value="volvo">Solo</option>
-  <option value="saab">Standard</option>
-</select></li>
-
-</ul>
-		
-	<form action="checkout.html">
-		<input type="submit" value="Place Order" onclick="myFunction()"/>
-	</form>
+		<div id="selection">
+		<h3>Order Selection</h3>
+		<div id="selection-inner">
+		<ul>
+			<li>
+				<label style="margin-top: 15px;">Model: </label><br>
+				<select id = "model">
+				  <option value="lightning">Lightning (96v)</option> <!-- 8,999 -->
+				  <option value="sparkle">Sparkle (48v)</option> <!-- 5,999 -->
+				  <option value="thunder">Thunder (192v)</option> <!-- 10,999 -->
+				  <option value="firefly">Firefly (24v)</option> <!-- 3,999 -->
+				</select>
+			</li>
+			<li>
+				<label>Color: </label><br>
+				<select id = "color">
+					<option value="black/white">Black & White</option>
+					<option value="yellow/red">Yellow & Red (+ $250)</option>
+				</select>
+			</li>
+			<div id="premiumGraphics">
+			<li>
+				<label>Graphics: </label><br>
+				<select id = "graphics">
+					<option value="no">No (No additional charge)</option>
+					<option value="yes">Yes (+ $350)</option>
+				</select>
+			</li>
+			</div>
+			<li>
+				<label>Wheels: </label><br>
+				<select id = "wheels">
+					<option value="18">18 Inch</option>
+					<option value="19">19 Inch</option>
+				</select>
+			</li>
+			<li>
+				<label>Premium Wheels </label><br>
+				<select id = "premium">
+					<option value="no">No (No additional charge)</option>
+					<option value="yes">Yes (+ $100)</option>
+				</select>
+			</li>
+			<li>
+				<label>Seat Type: </label><br>
+				<select id = "seat">
+					<option value="solo">Solo</option>
+					<option value="standard">Standard</option>
+				</select>
+			</li>
+		</ul>
+</div>
+		<button  class="button" id="ordersubmit" onclick="getValues();">Check Out</button>
+		<!-- Color options will change based on if they select premium or not.<p> -->
+	</div>
 
 <script>
 $('#effect').show();
