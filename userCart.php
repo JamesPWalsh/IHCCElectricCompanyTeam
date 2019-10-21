@@ -14,11 +14,75 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
-		<script>
-		function myFunction() 
-		{
-			window.confirm("Add Chocie Of Deposit Here(if possible)");
-		}
+		<script>		
+		function getValues() {
+			var modelValue = document.getElementById("model");
+			var displayModel = modelValue.options[modelValue.selectedIndex].text;
+			document.getElementById("txtModel").value=displayModel;
+
+			var colorValue = document.getElementById("color");
+			var displayColor = colorValue.options[colorValue.selectedIndex].text;
+			document.getElementById("txtColor").value=displayColor;
+
+			var wheelsValue = document.getElementById("wheels");
+			var displayWheels = wheelsValue.options[wheelsValue.selectedIndex].text;
+			document.getElementById("txtWheels").value=displayWheels;
+
+			var premiumValue = document.getElementById("premium");
+			var displayPremium = premiumValue.options[premiumValue.selectedIndex].text;
+			document.getElementById("txtPremium").value=displayPremium;
+
+			var seatValue = document.getElementById("seat");
+			var displaySeat = seatValue.options[seatValue.selectedIndex].text;
+			document.getElementById("txtSeat").value=displaySeat;
+
+			var graphicsValue = document.getElementById("graphics");
+			var displayGraphics = graphicsValue.options[graphicsValue.selectedIndex].text;
+			document.getElementById("txtGraphics").value=displayGraphics;
+
+			var total = 0;
+			var base = 0;
+
+			switch (displayModel) {
+				case "Lightning (96v)":
+					total = total + 8999;
+					base = 8999;
+					break;
+				case "Sparkle (48v)":
+					total = total + 5999;
+					base = 5999;
+					break;
+				case "Thunder (192v)":
+					total = total + 10999;
+					base = 10999;
+					break;
+				case "Firefly (24v)":
+					total = total + 3999;
+					base = 3999;
+					break;
+			}
+
+			if(displayColor == "Yellow & Red (+ $250)") {
+				total = total + 250;
+				//$( document ).ready(function() {
+				//$('#premiumGraphics').show();
+				//}
+			}
+
+			if(displayPremium == "Yes (+ $100)") {
+				total = total + 100;
+			}
+
+			if(displayGraphics == "Yes (+ $350)") {
+				total = total + 350;
+			}
+			total = numberWithCommas(total);
+			base = numberWithCommas(base);
+			document.getElementById("txtTotal").value="$"+total;
+
+			document.getElementById("txtBase").value="$"+base;
+			localStorage.setItem("total", total);
+			}
 		</script>
 		
 		<style>
@@ -160,7 +224,7 @@
   </form>
 </div>
 <div class="topnav" style="display:none">
-  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
+  <a href="javascript:void(0);" class="icon" id="icon" style="">
   <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
   </a>
 
@@ -239,18 +303,7 @@
 $('#effect').show();
 $('.login-container').show();
 $('.topnav').hide();
-function myFunction() {
-var x = document.getElementById("myLinks");
-if (x.style.display === "block") {
-x.style.display = "none";
-$('.login-container').show();
 
-} else {
-x.style.display = "block";
-x.style.textAlign = "center";
-
-}
-}
 function myFunction2(x) {
 if (x.matches) { // If media query matches
  $('#effect').hide();
