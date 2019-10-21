@@ -39,9 +39,9 @@
 		}
 		div#selection {
 			background-color: #ffffff;
-		margin-left: auto;
-		margin-right: auto;
-			width: 21%;
+			margin-left: auto;
+			margin-right: auto;
+			width: 40%;
 			text-align: center;
 			box-shadow: 1px 1px 1px grey;
 			margin-top: 10px;
@@ -50,31 +50,103 @@
 		div#selection-inner {
 		margin: -5px auto;
 		}
-		ul {
-		list-style:none;
-		}
-		li {
-		text-align: left;
-		}
-		h2 {
-		text-align: center;
-		}
-		label {
-		font-weight: bold;
-		}
-		button#finish {
-		margin-top: 10px;
-		}
-		p {
-		text-align: center;
-		}
-		center {
-			padding-top: 38px;
-			background-color: rgb(0,0,0,.2);
-			color:white;
-			margin-left: auto;
-			margin-right: auto;
-		}
+		
+			ul {
+				list-style:none;
+			}
+
+			li {
+				text-align: left;
+			}
+
+			h1 {
+				text-align: center;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 30px;
+			}
+
+			h2 {
+				text-align: center;
+				padding-top: 12px;
+				padding-bottom: 15px;
+				background-color: #f2f2f2;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 20px;
+			}
+
+			h3 {
+				padding-top: 12px;
+				padding-bottom: 15px;
+				background-color: #f2f2f2;
+				margin: 0px;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 20px;
+			}
+
+			h4 {
+				text-align: center;
+				padding-top: 15px;
+				padding-bottom: 15px;
+				background-color: #f2f2f2;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 20px;
+			}
+
+			label {
+				font-weight: bold;
+			}
+
+			input[type=text].totaldisplay, select {
+				width: 250px;
+				padding: 12px 20px;
+				margin: 8px 0;
+				display: inline-block;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+
+			button#finish {
+				margin-top: 10px;
+			}
+
+			p {
+				text-align: center;
+			}
+
+			.button {
+				color: white;
+				background-color: #008CBA;
+				border-radius: 4px;
+				cursor: pointer;
+				text-decoration: none;
+			}
+
+			.place {
+				color: white;
+				background-color: #008CBA;
+				border-radius: 4px;
+				cursor: pointer;
+				text-decoration: none;
+			}
+			#model{
+				width:90%;
+			}
+						#color{
+				width:90%;
+			}
+						#graphics{
+				width:90%;
+			}
+						#wheels{
+				width:90%;
+			}
+						#premium{
+				width:90%;
+			}
+						#seat{
+				width:90%;
+			}
 		</style>
 	</head>
 	<body>
