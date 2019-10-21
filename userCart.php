@@ -37,6 +37,19 @@
 		div#clean {
 		display: inline-block;
 		}
+		div#selection {
+			background-color: #ffffff;
+		margin-left: auto;
+		margin-right: auto;
+			width: 21%;
+			text-align: center;
+			box-shadow: 1px 1px 1px grey;
+			margin-top: 10px;
+			padding-bottom: 60px;
+		}
+		div#selection-inner {
+		margin: -5px auto;
+		}
 		ul {
 		list-style:none;
 		}
