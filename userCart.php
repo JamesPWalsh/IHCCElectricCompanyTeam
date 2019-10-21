@@ -4,6 +4,7 @@
 <!--Contact.html
 	Author: Robert Hannah
 	09/16/2019 -->
+	<title>User Cart</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" media="screen" href="navbar.css">
 	<!-- Latest compiled and minified CSS -->
@@ -15,74 +16,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		
 		<script>		
-		function getValues() {
-			var modelValue = document.getElementById("model");
-			var displayModel = modelValue.options[modelValue.selectedIndex].text;
-			document.getElementById("txtModel").value=displayModel;
 
-			var colorValue = document.getElementById("color");
-			var displayColor = colorValue.options[colorValue.selectedIndex].text;
-			document.getElementById("txtColor").value=displayColor;
-
-			var wheelsValue = document.getElementById("wheels");
-			var displayWheels = wheelsValue.options[wheelsValue.selectedIndex].text;
-			document.getElementById("txtWheels").value=displayWheels;
-
-			var premiumValue = document.getElementById("premium");
-			var displayPremium = premiumValue.options[premiumValue.selectedIndex].text;
-			document.getElementById("txtPremium").value=displayPremium;
-
-			var seatValue = document.getElementById("seat");
-			var displaySeat = seatValue.options[seatValue.selectedIndex].text;
-			document.getElementById("txtSeat").value=displaySeat;
-
-			var graphicsValue = document.getElementById("graphics");
-			var displayGraphics = graphicsValue.options[graphicsValue.selectedIndex].text;
-			document.getElementById("txtGraphics").value=displayGraphics;
-
-			var total = 0;
-			var base = 0;
-
-			switch (displayModel) {
-				case "Lightning (96v)":
-					total = total + 8999;
-					base = 8999;
-					break;
-				case "Sparkle (48v)":
-					total = total + 5999;
-					base = 5999;
-					break;
-				case "Thunder (192v)":
-					total = total + 10999;
-					base = 10999;
-					break;
-				case "Firefly (24v)":
-					total = total + 3999;
-					base = 3999;
-					break;
-			}
-
-			if(displayColor == "Yellow & Red (+ $250)") {
-				total = total + 250;
-				//$( document ).ready(function() {
-				//$('#premiumGraphics').show();
-				//}
-			}
-
-			if(displayPremium == "Yes (+ $100)") {
-				total = total + 100;
-			}
-
-			if(displayGraphics == "Yes (+ $350)") {
-				total = total + 350;
-			}
-			total = numberWithCommas(total);
-			base = numberWithCommas(base);
-			document.getElementById("txtTotal").value="$"+total;
-
-			document.getElementById("txtBase").value="$"+base;
-			localStorage.setItem("total", total);
-			}
 		</script>
 		
 		<style>
@@ -244,7 +178,7 @@
 </div>
 		
 		<div id="selection">
-		<h3>Order Selection</h3>
+		<h3>User Cart</h3>
 		<div id="selection-inner">
 		<ul>
 			<li>
