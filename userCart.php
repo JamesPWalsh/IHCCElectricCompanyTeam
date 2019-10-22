@@ -158,7 +158,11 @@
 		 $graphic = getCategory($id,'graphic');
 		 $wheel = getCategory($id,'wheel');
 		 $color = getCategory($id,'color');
-		 if(!$graphic)$graphic = 'No graphics';
+		 if($graphic){
+			 $graphic = 'Premiuim Graphics';
+		 }elseif(!$graphic){
+			 $graphic = 'No graphics';
+		 }
 	 }
 	 function getCategory($id,$var) {
 		 include('connect.php');
@@ -245,40 +249,21 @@
 			</li>
 			<li>
 				<label>Color: </label><br>
-				<select id = "color">
-					<option value="black/white">Black & White</option>
-					<option value="yellow/red">Yellow & Red (+ $250)</option>
-				</select>
+				<input disabled class="form" type="text" name="username" value="<?php echo (isset($color))?$color:'';?>" id="form-email" width="400px"/>
 			</li>
 			<div id="premiumGraphics">
 			<li>
 				<label>Graphics: </label><br>
-				<select id = "graphics">
-					<option value="no">No (No additional charge)</option>
-					<option value="yes">Yes (+ $350)</option>
-				</select>
+				<input disabled class="form" type="text" name="username" value="<?php echo (isset($graphic))?$graphic:'';?>" id="form-email" width="400px"/>
 			</li>
 			</div>
 			<li>
 				<label>Wheels: </label><br>
-				<select id = "wheels">
-					<option value="18">18 Inch</option>
-					<option value="19">19 Inch</option>
-				</select>
-			</li>
-			<li>
-				<label>Premium Wheels </label><br>
-				<select id = "premium">
-					<option value="no">No (No additional charge)</option>
-					<option value="yes">Yes (+ $100)</option>
-				</select>
-			</li>
+				<input disabled class="form" type="text" name="username" value="<?php echo (isset($wheel))?$wheel:'';?>" id="form-email" width="400px"/>
+			</li>			
 			<li>
 				<label>Seat Type: </label><br>
-				<select id = "seat">
-					<option value="solo">Solo</option>
-					<option value="standard">Standard</option>
-				</select>
+				<input disabled class="form" type="text" name="username" value="<?php echo (isset($seat))?$seat:'';?>" id="form-email" width="400px"/>
 			</li>
 		</ul>
 </div>
