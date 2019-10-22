@@ -20,6 +20,7 @@
 			//$('#orderdisplay').show();
 			//});
 			//});
+			var id = 0;
 			function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}
@@ -96,6 +97,9 @@
 		{
 			window.confirm("Add Chocie Of Deposit Here(if possible)");
 		}
+		function getID() {
+			return id;
+		}
 		</script>
 		<script>
 		$( document ).ready(function() {
@@ -108,12 +112,17 @@
 		$("#ordersubmit").click(function(){
 		$('#orderdisplay').show();
 		$('#placeorder').show();
-		model_itemid = changeValueForDB($('#txtModel').val());
-		color_itemid = changeValueForDB($('#txtColor').val());
-		wheels_itemid = changeValueForDB($('#txtWheels').val() + " " + $('#txtPremium').val());
-		graphics_itemid = changeValueForDB($('#txtGraphics').val());
+		model_itemid = changeValueForDB($('#txtModel').val())[0];
+		color_itemid = changeValueForDB($('#txtColor').val())[0];
+		wheels_itemid = changeValueForDB($('#txtWheels').val() + " " + $('#txtPremium').val())[0];
+		try {
+		  graphics_itemid = changeValueForDB($('#txtGraphics').val())[0];
+		}
+		catch(error) {
+		  graphics_itemid = 0;
+		}
 		if(graphics_itemid == undefined) graphics_itemid = 0;
-		seat_itemid = changeValueForDB($('#txtSeat').val());
+		seat_itemid = changeValueForDB($('#txtSeat').val())[0];
 		console.log("you will need items " + model_itemid + "," + color_itemid + "," + wheels_itemid + "," + graphics_itemid + "," + seat_itemid);
 		});
 		$("button#finish").click(function(){
@@ -131,6 +140,9 @@
 				success: function (html) {
 					console.log("success");
 					$('div#teste').html(html);
+					id = $('p#myid').html();
+					$('div#checkoutbutton').show();
+					$('input#hiddenid').val(id);
 				}
 			});
 			console.log("failure");
@@ -140,62 +152,79 @@
 			var items = {
 				item1: {
 					itemid:1,
-					description:'Lightning (96v)'
+					description:'Lightning (96v)',
+					category:'Model'
 				},
 				item2: {
 					itemid:2,
-					description:'Sparkle (48v)'
+					description:'Sparkle (48v)',
+					category:'Model'
 				},
 				item3: {
 					itemid:3,
-					description:'Thunder (192v)'
+					description:'Thunder (192v)',
+					category:'Model'
 				},
 				item4: {
 					itemid:4,
-					description:'Firefly (24v)'
+					description:'Firefly (24v)',
+					category:'Model'
 				},
 				item5: {
 					itemid:5,
-					description:'Black & White'
+					description:'Black & White',
+					category:'Paint Color'
 				},
 				item6: {
 					itemid:6,
-					description:'Yellow & Red (+ $250)'
+					description:'Yellow & Red (+ $250)',
+					category:'Paint Color'
 				},
 				item7: {
 					itemid:7,
-					description:'Yes (+ $350)'
+					description:'Yes (+ $350)',
+					category:'Graphic'
 				},
 				item8: {
 					itemid:8,
-					description:'18 Inch No (No additional charge)'
+					description:'18 Inch No (No additional charge)',
+					category:'Wheel'
 				},
 				item9: {
 					itemid:9,
-					description:'19 Inch No (No additional charge)'
+					description:'19 Inch No (No additional charge)',
+					category:'Wheel'
 				},
 				item10: {
 					itemid:10,
-					description:'18 Inch Yes (+ $100)'
+					description:'18 Inch Yes (+ $100)',
+					category:'Wheel'
 				},
 				item11: {
 					itemid:11,
-					description:'19 Inch Yes (+ $100)'
+					description:'19 Inch Yes (+ $100)',
+					category:'Wheel'
 				},
 				item12: {
 					itemid:12,
-					description:'Solo'
+					description:'Solo',
+					category:'Seat'
 				},
 				item13: {
 					itemid:13,
-					description:'Standard'
+					description:'Standard',
+					category:'Seat'
 				}
 				};
 				var keys = Object.keys(items);
 				for (var key in items) {
 					if (Object.values(items[key]).indexOf(input) > -1) {
 						var id = items[key].itemid;
-						return id;
+						var cat = items[key].category;
+						var both = new Object();
+						both[0] = id;
+						both[1] = cat;
+						return both;
 					} else {
 					}
 				}
@@ -223,7 +252,20 @@
 				text-align: center;
 				box-shadow: 1px 1px 1px grey;
 			  margin-top: 10px;
-				padding-bottom: 60px;
+			}
+			div#checkoutbutton {
+				position: relative;
+				top: 70px;
+			}
+			button#checkout {
+				position: absolute;
+				right: 50px;
+				color: white;
+				background-color: #008CBA;
+				border-radius: 4px;
+				cursor: pointer;
+				text-decoration: none;
+				padding:20px 40px 20px 40px;
 			}
 			div#selection-inner {
 				margin: -5px auto;
@@ -232,9 +274,9 @@
 				margin-top: 20px;
 				background-color: #ffffff;
 				width: 74%;
+				padding-bottom: 50px;
 				box-shadow: 1px 1px 1px grey;
 				margin-left: 15px;
-				height: 300px;
 			}
 
 			div#total {
@@ -325,6 +367,7 @@
 				border-radius: 4px;
 				cursor: pointer;
 				text-decoration: none;
+				margin-bottom: 20px;
 			}
 
 			.place {
@@ -361,7 +404,8 @@
 		</div>
 		<ul class="effect" id="effect" style="display:none">
 			<li><a class="Active" href="ModelInformation.php">Our Models</a></li>
-		  <li><a class="Active" href="About.php">About Us</a></li>
+
+		  <li><a  href="About.php">About Us</a></li>
 		  <li><a href="Contact.php">Contact Us</a></li>
 		  <li><a href="FAQ.php">Faq Page</a></li>
 		</ul>
@@ -424,8 +468,13 @@
 </div>
 		<button  class="button" id="ordersubmit" onclick="getValues();">Update</button>
 		<!-- Color options will change based on if they select premium or not.<p> -->
+		<div id='checkoutbutton' style='display:none;'>
+			<form action="userCart.php" method="post">
+			<input type='hidden' name='id' value='' id="hiddenid"/>
+	<button id='checkout'>Proceed to checkout</button>
+</form>
+		</div>
 	</div>
-
 		<div id="orderdisplay">
 			<h2>Order Information</h2>
 
@@ -460,8 +509,8 @@
 				<label>Total:</label><br>
 				<input type="text" id="txtTotal" class="totaldisplay" placeholder="N/A" disabled/><br>
     <button class="place" id="finish" type="submit">Place Order</button>
-		<div id="teste">
-		</div>
+			</div>
+			<div id="teste">
 			</div>
 		</div>
 			<script src="resize.js"></script>

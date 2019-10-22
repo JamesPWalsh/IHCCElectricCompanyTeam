@@ -38,13 +38,14 @@
 </div>
 </div>
 <ul class="effect" id="effect">
+  <li><a href="Contact.php">Sign Up</a></li>
 <li><a href="About.php">About Us</a></li>
+<li><a href="modelinformation.php">Our Models</a></li>
 <li><a href="FAQ.php">Faq Page</a></li>
 <li><a href="modelorder.php">Order Here</a></li>
  <li><a href="Contact.php">Contact Us</a></li>
 </ul>
 </div>
-
 	<style>
   div#navbar {
     position:fixed;
