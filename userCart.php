@@ -147,7 +147,65 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body>	
+		<?php
+	include('connect.php');
+	include('accountstuff.php');
+	 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	   $id = $_POST["id"];
+		 $seat = getCategory($id,'seat');
+		 $model = getCategory($id,'model');
+		 $graphic = getCategory($id,'graphic');
+		 $wheel = getCategory($id,'wheel');
+		 $color = getCategory($id,'color');
+		 if(!$graphic)$graphic = 'No graphics';
+	 }
+	 function getCategory($id,$var) {
+		 include('connect.php');
+		 if($var == 'seat') {
+			 $sql = "SELECT i.description FROM inventory i, order_items oi WHERE oi.item_id = i.item_id AND oi.order_id = $id and category = 'Seat'";
+			$result = $conn->query($sql);
+			if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+						return $row["description"];
+				}
+			}
+		} elseif ($var == 'model') {
+			$sql = "SELECT i.description FROM inventory i, order_items oi WHERE oi.item_id = i.item_id AND oi.order_id = $id and category = 'Model'";
+		 $result = $conn->query($sql);
+		 if ($result->num_rows > 0) {
+			 while($row = $result->fetch_assoc()) {
+					 return $row["description"];
+			 }
+		 }
+	 } elseif ($var == 'graphic') {
+		 $sql = "SELECT i.description FROM inventory i, order_items oi WHERE oi.item_id = i.item_id AND oi.order_id = $id and category = 'Graphic'";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			while($row = $result->fetch_assoc()) {
+					return $row["description"];
+			}
+		}
+	} elseif ($var == 'wheel') {
+		$sql = "SELECT i.description FROM inventory i, order_items oi WHERE oi.item_id = i.item_id AND oi.order_id = $id and category = 'Wheel'";
+	 $result = $conn->query($sql);
+	 if ($result->num_rows > 0) {
+		 while($row = $result->fetch_assoc()) {
+				 return $row["description"];
+		 }
+	 }
+ } elseif ($var == 'color') {
+	 $sql = "SELECT i.description FROM inventory i, order_items oi WHERE oi.item_id = i.item_id AND oi.order_id = $id and category = 'Paint Color'";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+				return $row["description"];
+		}
+	}
+ }
+	 }
+		 ?>
+	
 <div id="Container">
 <div id="navbar">
 <div class="login-container">
@@ -183,12 +241,7 @@
 		<ul>
 			<li>
 				<label style="margin-top: 15px;">Model: </label><br>
-				<select id = "model">
-				  <option value="lightning">Lightning (96v)</option> <!-- 8,999 -->
-				  <option value="sparkle">Sparkle (48v)</option> <!-- 5,999 -->
-				  <option value="thunder">Thunder (192v)</option> <!-- 10,999 -->
-				  <option value="firefly">Firefly (24v)</option> <!-- 3,999 -->
-				</select>
+				<input disabled class="form" type="text" name="username" value="<?php echo (isset($model))?$model:'';?>" id="form-email" width="400px"/>
 			</li>
 			<li>
 				<label>Color: </label><br>
