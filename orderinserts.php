@@ -5,6 +5,7 @@ include('accountstuff.php');
    $model = $_POST["model"];
    $color = $_POST["color"];
    $wheels = $_POST["wheels"];
+   $seat = $_POST["seat"];
    $last_id = '';
    $graphic = $_POST["graphics"];
    if (!isset($_SESSION))session_start();
@@ -16,7 +17,7 @@ include('accountstuff.php');
      } else {
        echo "not success";
      }
-     $sql = "INSERT INTO orders VALUES ($last_id,3)";
+     $sql = "INSERT INTO orders VALUES ($last_id,3,NULL)";
      if ($conn->query($sql) === TRUE) {
      } else {
        echo "not success";
@@ -28,6 +29,13 @@ include('accountstuff.php');
        echo "not success";
      }
    }
+   if (isset($_POST['seat'])) {
+   $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
+   if ($conn->query($sql) === TRUE) {
+   } else {
+     echo "not success";
+   }
+ }
    if (isset($_POST['color'])) {
    $sql = "INSERT INTO order_items VALUES ($last_id,$color,1)";
    if ($conn->query($sql) === TRUE) {
@@ -42,6 +50,13 @@ include('accountstuff.php');
     echo "not success";
   }
   }
+  if (isset($_POST['seat'])) {
+  $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
+  if ($conn->query($sql) === TRUE) {
+  } else {
+    echo "not success";
+  }
+  }
   if ($graphic != 0) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$graphic,1)";
   if ($conn->query($sql) === TRUE) {
@@ -49,7 +64,11 @@ include('accountstuff.php');
     echo "not success";
   }
   }
-  echo "Successfully submitted order";
- }
+  echo "<p style='margin-top:30px;'>Successfully added order to cart!</p>";
+  echo "<p id='myid'>".$last_id."</p>";
+  return 1;
+}
+echo "Something went wrong with your order, please make sure you're logged in to complete your order.";
+return 0;
 }
 ?>
