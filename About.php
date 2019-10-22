@@ -68,21 +68,13 @@ text-shadow: 2px 2px 4px #000000;
 <center><h1>About Us</h1></center>
 <center>
 Electric motercicles<br />
-The devices of the future, We build your own custom Electric motercycles.<br />
-We have the best engineers in the contry, building and designing Motercycles.<br />
-We offer jobs to all walks of life, from fast food to welding.<br />
-We build more then even motercycles, as we have built things from human reforming devices to tooth brushes.<br />
-We even have liturature teachers.<br />
-We also build immortality devices.<br />
-We have also liberated france.<br />
-We have also eaten a whole chicken army.<br />
-We have also built a robot steve jobs.<br />
-We have also built a robot einstien.<br />
-We have also built a robot Nichola Tesla.<br />
-We also built all computers on earth.<br />
-We own every company.<br />
-There is only one company you can buy from, and thats us.<br />
-youre never gonna buy from any other company.<br />
+Our company builds elecrically powered motercycles for the public to use.</br>
+We pride ourselves on quality over quantity, builing each part manualy rather then automatically.</br>
+We have helped in the advancment of ion battery technologies, funding and reaserching how to make them more effecient and cheaper to make.</br>
+Our goal isnt to just provide the world with clean running motercycles, but to alos enhance the batteries that will power our future.</br>
+</br>
+</br>
+{server.sayhere("lies.txt")}
 </font>
 
 </center>
