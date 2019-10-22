@@ -55,6 +55,7 @@
 
 			li {
 				text-align: left;
+				
 			}
 
 			h1 {
@@ -145,6 +146,7 @@
 						#seat{
 				width:90%;
 			}
+						
 		</style>
 	</head>
 	<body>	
@@ -245,25 +247,25 @@
 		<ul>
 			<li>
 				<label style="margin-top: 15px;">Model: </label><br>
-				<input disabled class="form" type="text" name="username" value="<?php echo (isset($model))?$model:'';?>" id="form-email" width="400px"/>
+				<input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php echo (isset($model))?$model:'';?>" id="form-email" width="400px"/>
 			</li>
 			<li>
 				<label>Color: </label><br>
-				<input disabled class="form" type="text" name="username" value="<?php echo (isset($color))?$color:'';?>" id="form-email" width="400px"/>
+				<input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php echo (isset($color))?$color:'';?>" id="form-email" width="400px"/>
 			</li>
 			<div id="premiumGraphics">
 			<li>
 				<label>Graphics: </label><br>
-				<input disabled class="form" type="text" name="username" value="<?php echo (isset($graphic))?$graphic:'';?>" id="form-email" width="400px"/>
+				<input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php echo (isset($graphic))?$graphic:'';?>" id="form-email" width="400px"/>
 			</li>
 			</div>
 			<li>
 				<label>Wheels: </label><br>
-				<input disabled class="form" type="text" name="username" value="<?php echo (isset($wheel))?$wheel:'';?>" id="form-email" width="400px"/>
+				<input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php echo (isset($wheel))?$wheel:'';?>" id="form-email" width="400px"/>
 			</li>			
 			<li>
 				<label>Seat Type: </label><br>
-				<input disabled class="form" type="text" name="username" value="<?php echo (isset($seat))?$seat:'';?>" id="form-email" width="400px"/>
+				<input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php echo (isset($seat))?$seat:'';?>" id="form-email" width="400px"/>
 			</li>
 		</ul>
 </div>
