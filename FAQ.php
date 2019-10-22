@@ -34,6 +34,10 @@ center#second {
 	position: relative;
 
 }
+center#third {
+	position: relative;
+
+}
 </style>
 
 </head>
@@ -76,24 +80,37 @@ center#second {
 <div id="content">
 
 <center>
-Q: What Dinosaur is the best?</br>
-A: T-Rex of course.</br>
+Q: What battery type is used on the bikes?</br>
+A: Lithium Ion batteries.</br>
 </br>
 </br>
-Q: What is the best bird?</br>
-A: all of them!</br>
+Q: What is the most common part to fail?</br>
+A: Typically the battery, but only if the bike is left out in the elements</br>
 </br>
 </br>
-Q: Is this the FAQ section?</br>
-A: no.</br>
+Q: If the bike was to fail, would you replace it?</br>
+A: no, but you will get a 60% discount on your next bike as well as a lifetime part replacement garenty.</br>
 </center>
 <center id="second">
 </br>
-Q: What is best puppo</br>
-A: Every Doggo!</br>
 </br>
-Q: whats a dogs favorite pizza?</br>
-A: PUPeroni.</br>
+Q: What would happen if a bike is defective after first use?</br>
+A: Full replacement, as well as a lifetime refundability on the bike.</br>
+</br>
+</br>
+Q: Why does my bike make a clanking noise?</br>
+A: Most likely a gear is busted, have it checked up and replaced.</br>
+</center>
+</center>
+<center id="third">
+</br>
+</br>
+Q: Why did my bike catch fire?</br>
+A: The lithium ion battery was most likely breached.</br>
+</br>
+</br>
+Q: How do i fuel this thing??</br>
+A: Plug the bike charging cable into an apropriate outlet, you can buy a converter off of this link <a href= "https://www.youtube.com/watch?v=VxMM4g2Sk8U."> here</a></br>
 </center>
 
 
