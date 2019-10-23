@@ -165,6 +165,12 @@
 		 }elseif(!$graphic){
 			 $graphic = 'No graphics';
 		 }
+		 $seat = ucwords($seat);
+		 $model = ucwords($model);
+		 $graphic = ucwords($graphic);
+		 $wheel = ucwords($wheel);
+		 $pieces = explode(" ", $color);
+		 $color = ucfirst($pieces[0]).$pieces[1].ucfirst($pieces[2]).ucfirst($pieces[3]); 
 	 }
 	 function getCategory($id,$var) {
 		 include('connect.php');

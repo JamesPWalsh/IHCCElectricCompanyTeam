@@ -65,7 +65,6 @@ include('accountstuff.php');
   }
   }
   echo "<p style='margin-top:30px;'>Successfully added order to cart!</p>";
-  echo "<p id='myid'>".$last_id."</p>";
   return 1;
 }
 echo "Something went wrong with your order, please make sure you're logged in to complete your order.";
