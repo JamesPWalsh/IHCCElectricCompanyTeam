@@ -1,39 +1,91 @@
-ul#navbar {
+#navbar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;  
+  background-color: #333;
+  border-bottom: 1px solid white;
+
+}
+* {
+	font-family: Arial, Helvetica, sans-serif;
 }
 
-ul#navbar > li{
+#navbar > ul {
+	list-style-type: none;
+}
+#navbar > ul > li{
   float: right;
 }
+div.login-container {
+  height: 51.8px;
+	float:left;
+}
+a#sign-out {
+  text-decoration:none;
+  font-size: 17px;
+  position: relative;
+  top: 13px;
+  left: 15px;
+	color:white;
 
-ul#navbar > li a {
-  display: block;
+}
+a#sign-out:hover {
+text-decoration:none;
+color:	#FFD700;
+-webkit-filter: sepia(70%); /* Safari 6.0 - 9.0 */
+filter: sepia(70%);
+}
+#navbar > ul > li a {
+  display: inline-block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
-/* Change the link color to #111 (black) on hover */
-ul#navbar > li a:hover {
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
+nav.navbar {
+	margin-bottom: 0px;
 }
-ul#navbar > li:hover {
--webkit-filter: sepia(100%); /* Safari 6.0 - 9.0 */
+.topnav #myLinks a:first-child{
+
+}
+@media screen and (max-width: 900px) {
+ #navbar > ul > li a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 7px 8px;
+  text-decoration: none;
+}
+}
+/* Change the link color to #111 (black) on hover */
+#navbar > ul > li a:hover {
+
+}
+div#navbar {
+	font-size: 16px;
+	font-weight: 400px;
+}
+input.login {
+	margin-left: 10px;
+	padding-left: 5px;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 15px;
+}
+#navbar > ul > li:hover {
+  -webkit-filter: sepia(100%); /* Safari 6.0 - 9.0 */
   filter: sepia(100%);
 }
 
-ul#navbar > li a:active {
+#navbar > ul > li a:active {
   box-shadow: 0 3px #FFF;
   transform: translateY(1px);
 }
-ul#navbar > li a:hover, ul#navbar > li a:active {
-box-shadow:0 0 2px #FFF; 
-} 
+#navbar > ul > li a:hover, ul#navbar > li a:active {
+box-shadow:0 0 2px #FFF;
+}
 .effect a {
 	position:relative;
 	outline:none;
@@ -96,4 +148,49 @@ box-shadow:0 0 2px #FFF;
 	-webkit-transform: rotate(0deg) translateX(50%);
 	-moz-transform: rotate(0deg) translateX(50%);
 	transform: rotate(0deg) translateX(50%);
-}	
+}
+
+a.icon {
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 0x;
+  color:white;
+
+}
+.topnav {
+
+  background-color: #333;
+  position: relative;
+}
+div#myLinks {
+  display: none;
+}
+a#droplink {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  margin: auto;
+  display: table;
+}
+.topnav a.icon {
+  display: block;
+  position: absolute;
+  right:10px;
+  top: 7px;
+}
+.topnav a.icon:hover {
+  color:	#FFD700;
+  -webkit-filter: sepia(70%); /* Safari 6.0 - 9.0 */
+  filter: sepia(70%);
+}
+.clearfix {
+overflow:hidden;
+}
+.clearfix::after {
+content: "";
+  clear: both;
+  display: table;
+  }
