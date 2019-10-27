@@ -14,6 +14,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php include 'loginchecks.php'?>
+<?php include "navbar.html" ?>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;
  background: url("images/ironrun.jpg") no-repeat center center fixed;
@@ -118,8 +119,6 @@ content: "";
 
 <body>
 <div id="Container">
-<?php include 'navbar.html'?>
-
 <div id="content">
 
 <div class="container">

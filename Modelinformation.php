@@ -11,9 +11,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php include 'loginchecks.php'?>
+<?php include "navbar.html" ?>
 <style>
 body {
-  background: url("images/t.jpg") no-repeat center center fixed;
+  background: url("images/ourmodels.jpg") no-repeat center center fixed;
  background-color: white;
  background-size:cover;
 }
@@ -23,6 +24,7 @@ padding-bottom: 15px;
 }
 
 .container {
+  width: 70%;
   border-radius: 10px;
   background-color: #f2f2f2;
   padding: 20px;
@@ -33,36 +35,6 @@ padding-bottom: 15px;
 	Author: Robert Hannah
 	09/10/2019 -->
 	<meta charset="utf-8">
-  <div id="navbar">
-    <div class="login-container">
-  				<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
-  			<form action="login.php" method="POST" id="loginform" style="display:none;">
-  	      <input class="login" type="text" placeholder="Username" name="username">
-  	      <input class="login" type="password" placeholder="Password" name="password">
-  	      <button type="submit" id="login">Login</button>
-  	    </form>
-  </div>
-  <div class="topnav" style="display:none">
-    <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-    <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-    </a>
-
-  <div id="myLinks">
-    <a href="About.php" id="droplink">About Us</a>
-  <a href="FAQ.php" id="droplink">Faq Page</a>
-   <a href="modelorder.php" id="droplink">Order Here</a>
-   <a href="accountcreation.php" id="droplink">Sign Up</a>
-    <a href="Contact.php" id="droplink">Contact Us</a>
-  </div>
-  </div>
-  <ul class="effect" id="effect" style="display:none">
-  <li><a href="About.php">About Us</a></li>
-  <li><a href="FAQ.php">Faq Page</a></li>
-  <li><a href="modelorder.php">Order Here</a></li>
-  <li><a href="accountcreation.php" id="droplink">Sign Up</a></li>
-   <li><a href="Contact.php">Contact Us</a></li>
-  </ul>
-  </div>
 </head>
 <body>
 <div class="container">

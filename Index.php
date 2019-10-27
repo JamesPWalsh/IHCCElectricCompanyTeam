@@ -16,36 +16,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php include 'loginchecks.php'?>
-<div id="navbar">
-<div class="login-container">
-      <a id='sign-out' href='login.php?signout=true' class='effect' style='display:none;'>Sign Out&nbsp;&#x2607;</a>
-    <form action="login.php" method="POST" id="loginform" style="display:none;">
-      <input class="login" type="text" placeholder="Username" name="username">
-      <input class="login" type="password" placeholder="Password" name="password">
-      <button type="submit" id="login">Login</button>
-    </form>
-</div>
-<div class="topnav" style="display:none">
-  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-  </a>
-
-<div id="myLinks">
-  <a href="About.php" id="droplink">About Us</a>
-<a href="FAQ.php" id="droplink">Faq Page</a>
- <a href="modelorder.php" id="droplink">Order Here</a>
-  <a href="Contact.php" id="droplink">Contact Us</a>
-</div>
-</div>
-<ul class="effect" id="effect">
-  <li><a href="Contact.php">Sign Up</a></li>
-<li><a href="About.php">About Us</a></li>
-<li><a href="modelinformation.php">Our Models</a></li>
-<li><a href="FAQ.php">Faq Page</a></li>
-<li><a href="modelorder.php">Order Here</a></li>
- <li><a href="Contact.php">Contact Us</a></li>
-</ul>
-</div>
+<?php include "navbar.html" ?>
 	<style>
   div#navbar {
     position:fixed;
@@ -179,7 +150,7 @@ div#contest {
 </style>
 </head>
 <body>
-  <div id="contest">
+  <div id="contest" style="display:none;">
 <h3 style="color:black;">Enter our contest to win a free helmet!</h3><br>
 <button style="display: block;margin: 0 auto;background-color:#333;color: white;padding: 10px;  border-radius: 15px;">Lets Go!</button>
   </div>
@@ -269,12 +240,6 @@ function showSlides(n) {
 </br>
 <footer>
 <fieldset>
-<center>
-<a href="https://www.facebook.com/"><p>Facebook</p></a>
-<a href="https://twitter.com/"><p>Twitter</p></a>
-<a href="https://www.youtube.com/?gl=US&tab=r1"><p>Youtube</p></a>
-<a href="https://www.twitch.tv/"><p>Twitch</p></a>
-</center>
 </fieldset>
 </footer>
 <script src="resize.js"></script>

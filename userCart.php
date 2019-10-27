@@ -14,11 +14,12 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <script>        
+<?php include 'loginchecks.php'?>
+        <?php include "navbar.html" ?>
+        <script>
 
         </script>
-        
+
         <style>
         div#order {
         text-align: center;
@@ -48,14 +49,14 @@
         div#selection-inner {
         margin: -5px auto;
         }
-        
+
             ul {
                 list-style:none;
             }
 
             li {
                 text-align: left;
-                
+
             }
 
             h1 {
@@ -104,7 +105,11 @@
                 border-radius: 4px;
                 box-sizing: border-box;
             }
-
+            div#carsubmit {
+              position:relative;
+            }
+            a#back {
+            }
             button#finish {
                 margin-top: 10px;
             }
@@ -146,13 +151,14 @@
                         #seat{
                 width:90%;
             }
-                        
+
         </style>
     </head>
-    <body>    
+    <body>
 <?php
-include('connect.php');
-include('accountstuff.php');
+
+include_once('connect.php');
+include_once('accountstuff.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id      = $_POST["id"];
     $seat    = getCategory($id, 'seat');
@@ -171,6 +177,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $graphic = ucwords($graphic);
     $pieces  = explode(" ", $color);
     $color   = ucfirst($pieces[0]) . " " . $pieces[1] . " " . ucfirst($pieces[2]) . " " . ucfirst($pieces[3]);
+    $price = 0;
+    $sql = "SELECT oi.order_id, sum(i.price) AS price FROM order_items oi, inventory i WHERE oi.item_id = i.item_id and oi.order_id = $id";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $price = $row["price"];
+        }
+    } else {
+      echo "ERROR".$conn->error;
+    }
+} else {
+  $id      = $_SESSION["orderid"];
+  $seat    = getCategory($id, 'seat');
+  $model   = getCategory($id, 'model');
+  $graphic = getCategory($id, 'graphic');
+  $wheel   = getCategory($id, 'wheel');
+  $color   = getCategory($id, 'color');
+  if ($graphic) {
+      $graphic = 'Premium Graphics';
+  } elseif (!$graphic) {
+      $graphic = 'No graphics';
+  }
+  $seat    = ucwords($seat);
+  $model   = ucwords($model);
+  $wheel   = ucwords($wheel);
+  $graphic = ucwords($graphic);
+  $pieces  = explode(" ", $color);
+  $color   = ucfirst($pieces[0]) . " " . $pieces[1] . " " . ucfirst($pieces[2]) . " " . ucfirst($pieces[3]);
+  $price = 0;
+  $sql = "SELECT oi.order_id, sum(i.price) AS price FROM order_items oi, inventory i WHERE oi.item_id = i.item_id and oi.order_id = $id";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+      while ($row = $result->fetch_assoc()) {
+          $price = $row["price"];
+      }
+  }
 }
 function getCategory($id, $var)
 {
@@ -216,42 +258,16 @@ function getCategory($id, $var)
             }
         }
     }
-    
+
 }
 ?>
-   
-<div id="Container">
-<div id="navbar">
-<div class="login-container">
-  <form action="/action_page.php">
-    <input class="login" type="text" placeholder="Username" name="username">
-    <input class="login" type="text" placeholder="Password" name="password">
-    <button type="submit">Login</button>
-  </form>
-</div>
-<div class="topnav" style="display:none">
-  <a href="javascript:void(0);" class="icon" id="icon" style="">
-  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-  </a>
 
-<div id="myLinks">
-<a class="active" href="About.html" id="droplink">About Us</a>
- <a href="modelorder.html" id="droplink">Order Here</a>
-  <a href="Contact.html" id="droplink">Contact Us</a>
-  <a href="accountcreation.html" id="droplink">Sign Up</a>
-</div>
-</div>
-<ul class="effect" id="effect" style="display:none">
-    <li><a class="active" href="About.html">About Us</a></li>
-<li><a href="modelorder.html">Order Here</a></li>
- <li><a href="Contact.html">Contact Us</a></li>
- <li><a href="accountcreation.html" id="droplink">Sign Up</a></li>
-</ul>
-</div>
-        
+<div id="Container">
+
         <div id="selection">
         <h3>User Cart</h3>
         <div id="selection-inner">
+          <h3>Price: $<?php echo (isset($price)) ? $price : 'Invalid';?></h3>
         <ul>
             <li>
                 <label style="margin-top: 15px;">Model: </label><br>
@@ -278,7 +294,7 @@ echo (isset($graphic)) ? $graphic : '';
                 <input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php
 echo (isset($wheel)) ? $wheel : '';
 ?>" id="form-email" width="400px"/>
-            </li>            
+            </li>
             <li>
                 <label>Seat Type: </label><br>
                 <input disabled class="form" type="text" name="username" style="width: 90%;" value="<?php
@@ -287,11 +303,16 @@ echo (isset($seat)) ? $seat : '';
             </li>
         </ul>
 </div>
-        <button  class="button" id="ordersubmit" onclick="getValues();">Check Out</button>
-        <!-- Color options will change based on if they select premium or not.<p> -->
+      <form id="cartsubmit" method="get" action="order.php">
+        <input type="text" id="formprice" name="price" style="display:none;" value="<?php echo (isset($price)) ? $price : 'Invalid';?>"/>
+        <button class="button" id="ordersubmit" onclick="getValues();" style="margin-top: 50px;">Check Out</button>
+        <br><br><a id="back" style="color:black;" href="modelorder.php?order=false">Back to ordering options&#x2607;</a>
+      </form>
     </div>
 
 <script>
+$( "a#back" ).click(function() {
+});
 $('#effect').show();
 $('.login-container').show();
 $('.topnav').hide();

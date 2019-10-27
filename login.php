@@ -12,7 +12,9 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<?php include 'loginchecks.php' ?>
+
+<?php if (!isset($_SESSION))session_start();
+include "navbar.html" ?>
 	</head>
 	<style>
 	body {
@@ -110,34 +112,6 @@ a#sign-out {
 }
 		</style>
 	<body>
-	<div id="navbar">
-	<div class="login-container">
-				<a id='sign-out' href='login.php?signout=true' class='effect' style='display:none;'>Sign Out&nbsp;&#x2607;</a>
-			<form action="login.php" method="POST" id="loginform" style="display:none;">
-	      <input class="login" type="text" placeholder="Username" name="username">
-	      <input class="login" type="password" placeholder="Password" name="password">
-	      <button type="submit" id="login">Login</button>
-	    </form>
-  </div>
-  <div class="topnav" style="display:none">
-    <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-    <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-	  </a>
-
-	<div id="myLinks">
-    <a href="About.php" id="droplink">About Us</a>
-	<a href="FAQ.php" id="droplink">Faq Page</a>
-   <a href="modelorder.php" id="droplink">Order Here</a>
-    <a href="Contact.php" id="droplink">Contact Us</a>
-  </div>
-  </div>
-	<ul class="effect" id="effect">
-	<li><a href="About.php">About Us</a></li>
-  <li><a href="FAQ.php">Faq Page</a></li>
-  <li><a href="modelorder.php">Order Here</a></li>
-   <li><a href="Contact.php">Contact Us</a></li>
-</ul>
-</div>
 
 <div class="container-fluid">
   <div class="row">
@@ -183,7 +157,9 @@ a#sign-out {
 	                $_SESSION['username'] = $username;
 									$_SESSION['user_id'] = $row['user_id'];
 	                return $successpart1 . $row["first_name"] . " " . $row["last_name"] . $successpart2 . $changelogged;
-	            }
+	            } else {
+								return "<h2 style='margin-bottom: 100px;margin-top:50px;'>Invalid email or password</h2><p>Please re-enter your username and password.</p><img src='Images/logo.png' style='display: block;margin-left: auto;margin-right: auto; margin-top: 100px;'/>";
+							}
 	            return "";
 	        }
 	    }
@@ -211,6 +187,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo $logout;
 }
 ?>
+<?php include 'loginchecks.php'?>
 </div>
 		</div>
 		</div>

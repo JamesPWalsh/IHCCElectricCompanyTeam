@@ -12,7 +12,32 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<?php
+		include_once('connect.php');
+
+		if (!isset($_SESSION))session_start();
+		if (isset($_GET['order'])) {
+		if($_GET['order'] == "false") {
+			if (isset($_SESSION['orderid'])) {
+				$orderid = $_SESSION['orderid'];
+				$sqlorders = "DELETE FROM orders WHERE order_id = $orderid";
+				$sqlorderitems = "DELETE FROM order_items WHERE order_id = $orderid";
+				$sqlorderstrack = "DELETE FROM orders_track WHERE order_id = $orderid";
+				if ($conn->query($sqlorders) === TRUE) {
+				if ($conn->query($sqlorderitems) === TRUE) {
+				}
+				if ($conn->query($sqlorderstrack) === TRUE) {
+				}
+				} else {
+				echo "Error deleting records: " . $conn->error;
+				}
+				unset ($_SESSION['orderid']);
+			}
+		}
+		}
+		?>
 			<?php include 'loginchecks.php'?>
+			<?php include "navbar.html" ?>
 		<script>
 			//$( document ).ready(function() {
 			//$('#premiumGraphics').hide();
@@ -110,6 +135,7 @@
 		var seat_itemid = 0;
 		$('#orderdisplay').hide();
 		$("#ordersubmit").click(function(){
+		$('button#finish').show();
 		$('#orderdisplay').show();
 		$('#placeorder').show();
 		model_itemid = changeValueForDB($('#txtModel').val())[0];
@@ -141,6 +167,7 @@
 					console.log("success");
 					$('div#teste').html(html);
 					id = $('p#myid').html();
+					console.log(id);
 					$('div#checkoutbutton').show();
 					$('input#hiddenid').val(id);
 				}
@@ -248,10 +275,10 @@
 			div#selection {
 				background-color: #ffffff;
 				float: right;
-				width: 21%;
+				width: 22%;
 				text-align: center;
 				box-shadow: 1px 1px 1px grey;
-			  margin-top: 10px;
+			  margin-top: 20px;
 			}
 			div#checkoutbutton {
 				position: relative;
@@ -378,38 +405,6 @@
 				text-decoration: none;
 			}
 		</style>
-		<div id="navbar">
-			<div class="login-container">
-						<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
-					<form action="login.php" method="POST" id="loginform" style="display:none;">
-			      <input class="login" type="text" placeholder="Username" name="username">
-			      <input class="login" type="password" placeholder="Password" name="password">
-			      <button type="submit" id="login">Login</button>
-			    </form>
-		</div>
-		<div class="topnav" style="display:none">
-		  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-		  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-		  </a>
-
-		<div id="myLinks">
-			<a class="Active" href="ModelInformation.php">Our Models</a>
-		  <a class="Active" href="About.php">About Us</a>
-		  <a href="Contact.php">Contact Us</a></li>
-		  <a href="FAQ.php">Faq Page</a>
-
-
-
-		</div>
-		</div>
-		<ul class="effect" id="effect" style="display:none">
-			<li><a class="Active" href="ModelInformation.php">Our Models</a></li>
-
-		  <li><a  href="About.php">About Us</a></li>
-		  <li><a href="Contact.php">Contact Us</a></li>
-		  <li><a href="FAQ.php">Faq Page</a></li>
-		</ul>
-		</div>
 	</head>
 
 	<body>
@@ -508,7 +503,7 @@
 				<input type="text" id="txtBase" class="totaldisplay" placeholder="N/A" disabled/><br>
 				<label>Total:</label><br>
 				<input type="text" id="txtTotal" class="totaldisplay" placeholder="N/A" disabled/><br>
-    <button class="place" id="finish" type="submit">Place Order</button>
+    <button class="place" id="finish" style="display:none;" type="submit">Place Order</button>
 			</div>
 			<div id="teste">
 			</div>

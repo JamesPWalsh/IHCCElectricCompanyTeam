@@ -106,36 +106,7 @@ margin: 0 auto;
 }
 		</style>
 	<body>
-		<div id="navbar">
-		<div class="login-container">
-					<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
-				<form action="login.php" method="POST" id="loginform" style="display:none;">
-		      <input class="login" type="text" placeholder="Username" name="username">
-		      <input class="login" type="password" placeholder="Password" name="password">
-		      <button type="submit" id="login">Login</button>
-		    </form>
-  </div>
-  <div class="topnav" style="display:none">
-    <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-    <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-	  </a>
-
-	<div id="myLinks">
-    <a href="About.php" id="droplink">About Us</a>
-	<a href="FAQ.php" id="droplink">Faq Page</a>
-   <a href="modelorder.php" id="droplink">Order Here</a>
-    <a href="Contact.php" id="droplink">Contact Us</a>
-		<a href="Modelinformation.php" id="droplink">Our Models</a>
-  </div>
-  </div>
-	<ul class="effect" id="effect" style="display:none">
-	<li><a href="About.php">About Us</a></li>
-  <li><a href="FAQ.php">Faq Page</a></li>
-  <li><a href="modelorder.php">Order Here</a></li>
-   <li><a href="Contact.php">Contact Us</a></li>
-	 <li><a href="Modelinformation.php" id="droplink">Our Models</a></li>
-</ul>
-</div>
+	<?php include "navbar.html" ?>
 
 <div class="container-fluid">
   <div class="row">

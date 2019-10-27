@@ -28,36 +28,7 @@ text-shadow: 2px 2px 4px #000000;
 	09/10/2019 -->
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="navbar.css" />
-  <div id="navbar">
-	<div class="login-container">
-				<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
-			<form action="login.php" method="POST" id="loginform" style="display:none;">
-	      <input class="login" type="text" placeholder="Username" name="username">
-	      <input class="login" type="password" placeholder="Password" name="password">
-	      <button type="submit" id="login">Login</button>
-	    </form>
-</div>
-<div class="topnav" style="display:none">
-  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-  </a>
-
-<div id="myLinks">
-<a href="FAQ.php" id="droplink">Faq Page</a>
- <a href="modelorder.html" id="droplink">Order Here</a>
-  <a href="Contact.php" id="droplink">Contact Us</a>
-  <a href="accountcreation.php" id="signup">Sign Up</a>
-  <a href="Modelinformation.php" id="droplink">Our Models</a>
-</div>
-</div>
-<ul class="effect" id="effect" style="display:none">
-<li><a href="FAQ.php">Faq Page</a></li>
-<li><a href="modelorder.php">Order Here</a></li>
- <li><a href="Contact.php">Contact Us</a></li>
- <li><a href="accountcreation.php" id="signup">Sign Up</a></li>
- <li><a href="Modelinformation.php" id="droplink">Our Models</a></li>
-</ul>
-</div>
+  <?php include "navbar.html" ?>
 </head>
 <body>
 <br />
@@ -68,13 +39,21 @@ text-shadow: 2px 2px 4px #000000;
 <center><h1>About Us</h1></center>
 <center>
 Electric motercicles<br />
-Our company builds elecrically powered motercycles for the public to use.</br>
-We pride ourselves on quality over quantity, builing each part manualy rather then automatically.</br>
-We have helped in the advancment of ion battery technologies, funding and reaserching how to make them more effecient and cheaper to make.</br>
-Our goal isnt to just provide the world with clean running motercycles, but to alos enhance the batteries that will power our future.</br>
-</br>
-</br>
-{server.sayhere("lies.txt")}
+The devices of the future, We build your own custom Electric motercycles.<br />
+We have the best engineers in the contry, building and designing Motercycles.<br />
+We offer jobs to all walks of life, from fast food to welding.<br />
+We build more then even motercycles, as we have built things from human reforming devices to tooth brushes.<br />
+We even have liturature teachers.<br />
+We also build immortality devices.<br />
+We have also liberated france.<br />
+We have also eaten a whole chicken army.<br />
+We have also built a robot steve jobs.<br />
+We have also built a robot einstien.<br />
+We have also built a robot Nichola Tesla.<br />
+We also built all computers on earth.<br />
+We own every company.<br />
+There is only one company you can buy from, and thats us.<br />
+youre never gonna buy from any other company.<br />
 </font>
 
 </center>
