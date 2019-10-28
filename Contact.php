@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
 <!--Contact.html
-	Author: Robert Hannah
-	10/25/2018 -->
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="navbar.css" />
-	<link rel="stylesheet" type="text/css" href="navbar.css" />
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    Author: Robert Hannah
+    10/25/2018 -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="navbar.css" />
+    <link rel="stylesheet" type="text/css" href="navbar.css" />
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<?php include 'loginchecks.php'?>
-<?php include "navbar.html" ?>
+<?php
+include 'loginchecks.php';
+?>
+<?php
+include "navbar.html";
+?>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;
  background: url("images/ironrun.jpg") no-repeat center center fixed;
@@ -46,10 +50,10 @@ input[type=submit]:hover {
 }
 
 .container {
-	width: 70%;
-	margin-top: 5px;
+    width: 70%;
+    margin-top: 5px;
   border-radius: 10px;
-	border: 2px black inset;
+    border: 2px black inset;
   background-color: #f2f2f2;
   padding: 20px;
 }
@@ -125,13 +129,13 @@ content: "";
   <form action="/action_page.php" id="form">
 
 <center>
-	<h1>Contact Us</h1>
+    <h1>Contact Us</h1>
 </center>
 <center>
 
-	<input type="radio" name="gender" value="male"> Mr.
-	<input type="radio" name="gender" value="female"> Ms.
-	<input type="radio" name="gender" value="other"> Mrs.<br><br>
+    <input type="radio" name="gender" value="male"> Mr.
+    <input type="radio" name="gender" value="female"> Ms.
+    <input type="radio" name="gender" value="other"> Mrs.<br><br>
 
     <label for="fname">First Name</label><br>
     <input type="text" id="fname" name="firstname" class="forminput"  placeholder="Your first name.."><br>
@@ -151,11 +155,11 @@ content: "";
       <option value="text">Text</option>
       <option value="call">Call</option>
     </select><br>
-		<label for="subject">Subject</label>
+        <label for="subject">Subject</label>
     <br><textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea><br>
 
     <input type="submit" value="Submit" class="forminput" id="submit" style="text-align: center">
-	<p class="info">1234 Walnut Street
+    <p class="info">1234 Walnut Street
 Ottumwa, IA 52501<br>
 Phone: 123-888-9999
 ElectricCorp@email.com
@@ -178,22 +182,22 @@ ElectricCorp@email.com
   var x = document.getElementById("myLinks");
   if (x.style.display === "block") {
     x.style.display = "none";
-	 $('.login-container').show();
+     $('.login-container').show();
 
   } else {
     x.style.display = "block";
-	x.style.textAlign = "center";
-		 $('.login-container').hide();
+    x.style.textAlign = "center";
+         $('.login-container').hide();
   }
 }
 function myFunction2(x) {
   if (x.matches) { // If media query matches
      $('#effect').hide();
-	$('.topnav').show();
+    $('.topnav').show();
   } else {
   $('.login-container').show();
     $('#effect').show();
-	$('.topnav').hide();
+    $('.topnav').hide();
   }
 }
 
