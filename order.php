@@ -14,13 +14,20 @@
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <?php include 'loginchecks.php'?>
 		<script src="jquery-3.4.1.min.js"></script>
+		<?php include "navbar.html" ?>
+		<?php
+		if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  	$price = $_GET["price"];
+		}
+		 ?>
 		<script>
 		function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
 		$( document ).ready(function() {
 		$('#orderdisplay').hide();
-		var total = localStorage.getItem("total");
+		var total = 0;
+		total = <?php echo (isset($price)) ? $price : '';?>;
 		total = numberWithCommas(total);
 		$('p#total').append(total);
 		$("#ordersubmit").click(function(){
@@ -33,32 +40,6 @@
 		}
 		</script>
 
-		<div id="navbar">
-		<div class="login-container">
-					<a id='sign-out' href='login.php?signout=true' style='display:none;'>Sign Out&nbsp;</a>
-				<form action="login.php" method="POST" id="loginform" style="display:none;">
-		      <input class="login" type="text" placeholder="Username" name="username">
-		      <input class="login" type="password" placeholder="Password" name="password">
-		      <button type="submit" id="login">Login</button>
-		    </form>
-	</div>
-	<div class="topnav" style="display:none">
-	  <a href="javascript:void(0);" class="icon" id="icon" onclick="myFunction()" style="">
-	  <div class="clearfix"></div><i class="fa fa-bars fa-2x"></i>
-	  </a>
-
-	<div id="myLinks">
-	<a href="FAQ.php" id="droplink">Faq Page</a>
-	  <a href="Contact.php" id="droplink">Contact Us</a>
-	  <a href="accountcreation.php" id="signup">Sign Up</a>
-	</div>
-	</div>
-	<ul class="effect" id="effect" style="display:none">
-	<li><a href="FAQ.php">Faq Page</a></li>
-	 <li><a href="Contact.php">Contact Us</a></li>
-	 <li><a href="accountcreation.php" id="signup">Sign Up</a></li>
-	</ul>
-	</div>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;
  background: url("images/ironrun.jpg") no-repeat center center fixed;
@@ -190,31 +171,10 @@ filter:drop-shadow(8px 8px 10px gray);
 	});
 
 	</script>
-	<a id="back" style="color:black;" href="modelorder.php">Back to ordering options&#x2607;</a>
+	<a id="back" style="color:black;" href="userCart.php">Back to Cart&#x2607;</a>
 </div>
 
 </center>
-<?php
-if (!isset($_SESSION))session_start();
-  if (isset($_GET['signout'])) {
-    unset ($_SESSION["username"]);
-  }
-
-  if (isset($_SESSION['username'])) {
-		echo '<script language="javascript">';
-		echo '$(document).ready(function(){';
-		echo '$("div#loggedout").hide();';
-		echo '	});';
-		echo '</script>';
-
-  } else {
-		echo '<script language="javascript">';
-		echo '$(document).ready(function(){';
-		echo '$("div#loggedout").show();';
-		echo '	});';
-		echo '</script>';
-	}
-?>
 <script src="resize.js"></script>
 	</body>
 </html>

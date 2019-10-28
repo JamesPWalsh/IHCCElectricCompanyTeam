@@ -2,16 +2,17 @@
 include('connect.php');
 include('accountstuff.php');
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   $cust_id = $_POST["id"];
+   echo $cust_id;
    $model = $_POST["model"];
    $color = $_POST["color"];
    $wheels = $_POST["wheels"];
    $seat = $_POST["seat"];
    $last_id = '';
    $graphic = $_POST["graphics"];
-   if (!isset($_SESSION))session_start();
-   if (isset($_SESSION['user_id'])) {
-     $user = $_SESSION['user_id'];
-     $sql = "INSERT INTO orders_track VALUES (NULL,$user)";
+   $isvalid = getCustomerPass($conn,$cust_id);
+   if($isvalid != 0) {
+     $sql = "INSERT INTO orders_track VALUES (NULL,$cust_id)";
      if ($conn->query($sql) === TRUE) {
        $last_id = $conn->insert_id;
      } else {
@@ -29,6 +30,13 @@ include('accountstuff.php');
        echo "not success";
      }
    }
+   if (isset($_POST['seat'])) {
+   $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
+   if ($conn->query($sql) === TRUE) {
+   } else {
+     echo "not success";
+   }
+ }
    if (isset($_POST['color'])) {
    $sql = "INSERT INTO order_items VALUES ($last_id,$color,1)";
    if ($conn->query($sql) === TRUE) {
@@ -43,6 +51,13 @@ include('accountstuff.php');
     echo "not success";
   }
   }
+  if (isset($_POST['seat'])) {
+  $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
+  if ($conn->query($sql) === TRUE) {
+  } else {
+    echo "not success";
+  }
+  }
   if ($graphic != 0) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$graphic,1)";
   if ($conn->query($sql) === TRUE) {
@@ -50,19 +65,11 @@ include('accountstuff.php');
     echo "not success";
   }
   }
-  if (isset($_POST['seat'])) {
-  $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
-  if ($conn->query($sql) === TRUE) {
-  } else {
-    echo "not success";
-  }
-}
-  echo "<p style='margin-top:30px;'>Successfully added order to cart!</p>";
-  echo "<p id='myid' style='display:none;'>".$last_id."</p>";
-  $_SESSION["orderid"] = $last_id;
-  return 1;
-}
-echo "Something went wrong with your order, please make sure you're logged in to complete your order.";
+  echo "Successfully added order to database";
+   } else {
+     echo "Id entered is not a customer's account id";
+     return 0;
+   }
 return 0;
 }
 ?>
