@@ -26,18 +26,18 @@
 			border-radius: 15px;
 			background-color: white;
 		}
-		ul {
+		ul#wholelist {
 			list-style-type:none;
 			text-align: center;
 		}
 		li#orderelement {
 		}
-		ul li#orderelement a {
+		ul#wholelist li#orderelement a {
  			display:block;
 			text-decoration:none;
 			color:black;
 		}
-		ul li#orderelement a:hover {
+		ul#wholelist li#orderelement a:hover {
  			background-color:lightblue;
 		}
 		.modal {
@@ -114,26 +114,40 @@
 		</div>
 <div id="main">
 <h1 style="text-align:center;">View All Orders</h1>
+<div id="hold" style="text-align:center;">
+<label>Filter By Customer ID: </label><input id="cust" type="text" size="5"/><button id="custsearch">Search</button>
+<label style="margin-left: 10px;margin-bottom: 35px;">Filter By Employee ID: </label><input id="emp" type="text" size="5"/><button id="empsearch">Search</button><br>
+</div>
+<div id="area">
 <?php
+function getAll() {
+	$ser="localhost";
+	$user="root";
+	$pass="";
+	$db="electric-database";
+
+	$conn = mysqli_connect($ser,$user,$pass,$db) or die("connection failed");
 $sql = "SELECT o.order_id,o.user_id,
 (SELECT ot.user_id FROM orders_track ot, account a WHERE a.user_id = ot.user_id and ot.order_id = o.order_id) AS custid
 from orders o, account a
 where o.user_id = a.user_id";
 $result = $conn->query($sql);
+$wholething = '';
 if ($result->num_rows > 0) {
 	// output data of each row
-	echo "<ul>";
+	$wholething .= "<ul id='wholelist'>";
 	while($row = $result->fetch_assoc()) {
 		$id = $row["order_id"];
-		echo "<li id='orderelement'><a href='#' value='$id' id='singleorder'>"."Order ID: ".$row["order_id"] ." Customer ID: ".$row["user_id"]." Employee ID: ".$row["custid"]."</a></li>";
+		$wholething .= "<li id='orderelement'><a href='#' value='$id' id='singleorder'>"."Order ID: ".$row["order_id"] ." Customer ID: ".$row["user_id"]." Employee ID: ".$row["custid"]."</a></li>";
 	}
-	echo "</ul>";
+	$wholething .= "</ul>";
+	return $wholething;
 } else {
 return false;
 }
-
-
+}
 ?>
+</div>
 </div>
 		<!--database call to validate then insert record into table then generate customer id -->
 <script>
@@ -167,6 +181,29 @@ var x = window.matchMedia("(max-width: 900px)");
 myFunction(x); // Call listener function at run time;
 x.addListener(myFunction2); // Attach listener function on state changes
 $(document).ready(function() {
+	var all = "<?php echo getAll() ?>";
+	$('div#area').append(all);
+	$('button#custsearch').click(function () {
+		var id = $('input#cust').val();
+		if(!id) {
+			var ee = $('div#area').html().trim();
+			if(ee == '<ul id="wholelist"></ul>')
+			$('div#area').append(all);
+			return;
+		}
+		$('ul#wholelist').empty();
+		$.ajax({
+			type:"POST",
+			cache:false,
+			url:"filtercustomer.php",
+			data:{id:id},    // multiple data sent using ajax
+			success: function (html) {
+				$('ul#wholelist').append(html);
+			}
+		});
+		console.log("failure");
+		return false;
+	});
 			$('body').on('click', 'button#exitsubmit', function () {
 			console.log("MADE");
 		$('div.modal-content').empty();
@@ -175,6 +212,9 @@ $(document).ready(function() {
     $('button#search').click(function () {
       var id = $('#form-id').val();
 			console.log("ID: " + id);
+			if(!id) {
+
+			}
       $.ajax({
         type:"GET",
         cache:false,
