@@ -9,9 +9,7 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <?php
-include 'loginchecks.php';
-?>
+  <?php include 'loginchecks.php'?>
 <style>
 body {
  background: url("images/blackbike.jpg") no-repeat center center fixed;
@@ -26,13 +24,11 @@ text-shadow: 2px 2px 4px #000000;
 </style>
 
 <!--Administration.html
-    Author: Robert Hannah
-    09/10/2019 -->
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="navbar.css" />
-  <?php
-include "navbar.html";
-?>
+	Author: Robert Hannah
+	09/10/2019 -->
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="navbar.css" />
+  <?php include "navbar.html" ?>
 </head>
 <body>
 <br />

@@ -5,31 +5,27 @@
 </video>
 <head>
 <!--Administration.html
-    Author: Robert Hannah
-    09/26/2019 -->
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="navbar.css" />
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	Author: Robert Hannah
+	09/26/2019 -->
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="navbar.css" />
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<?php
-include 'loginchecks.php';
-?>
-<?php
-include "navbar.html";
-?>
-   <style>
+<?php include 'loginchecks.php'?>
+<?php include "navbar.html" ?>
+	<style>
   div#navbar {
     position:fixed;
   z-index:1;
   width: 100%;
   }
 body {
-        background-color: #9a9b9c;
-    }
+		background-color: #9a9b9c;
+	}
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
 .mySlides {display: none}
