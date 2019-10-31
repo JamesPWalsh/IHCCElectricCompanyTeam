@@ -78,6 +78,9 @@
 		margin: 4px 2px;
 		cursor: pointer;
 		}
+		div#complete {
+			position: absolute;
+		}
 		</style>
 		<div id="navbar">
 		<div class="login-container">
@@ -114,7 +117,9 @@
 		</div>
 <div id="main">
 <h1 style="text-align:center;">View All Orders</h1>
+
 <div id="hold" style="text-align:center;">
+	<label>Filter only complete: </label><input type="radio" id="complete" style="margin-right: 10px;"/>
 <label>Filter By Customer ID: </label><input id="cust" type="text" size="5"/><button id="custsearch">Search</button>
 <label style="margin-left: 10px;margin-bottom: 35px;">Filter By Employee ID: </label><input id="emp" type="text" size="5"/><button id="empsearch">Search</button><br>
 </div>
@@ -130,7 +135,8 @@ function getAll() {
 $sql = "SELECT o.order_id,o.user_id,
 (SELECT ot.user_id FROM orders_track ot, account a WHERE a.user_id = ot.user_id and ot.order_id = o.order_id) AS custid
 from orders o, account a
-where o.user_id = a.user_id";
+where o.user_id = a.user_id
+ORDER BY o.order_id";
 $result = $conn->query($sql);
 $wholething = '';
 if ($result->num_rows > 0) {
@@ -183,15 +189,37 @@ x.addListener(myFunction2); // Attach listener function on state changes
 $(document).ready(function() {
 	var all = "<?php echo getAll() ?>";
 	$('div#area').append(all);
+	$('input#complete').click(function () {
+		thisRadio = $(this);
+		if (thisRadio.hasClass("imChecked")) {
+        thisRadio.removeClass("imChecked");
+        thisRadio.prop('checked', false);
+				$('div#area').html("");
+				$('div#area').append(all);
+    } else {
+        thisRadio.prop('checked', true);
+        thisRadio.addClass("imChecked");
+				$.ajax({
+					type:"POST",
+					cache:false,
+					url:"filtercomplete.php", // multiple data sent using ajax
+					success: function (html) {
+						$('ul#wholelist').empty();
+						$('ul#wholelist').append(html);
+					}
+				});
+    };
+	});
 	$('button#custsearch').click(function () {
 		var id = $('input#cust').val();
 		if(!id) {
-			var ee = $('div#area').html().trim();
-			if(ee == '<ul id="wholelist"></ul>')
+			$('div#area').html("");
 			$('div#area').append(all);
 			return;
 		}
 		$('ul#wholelist').empty();
+		$('input#complete').removeClass("imChecked");
+		$('input#complete').prop('checked', false);
 		$.ajax({
 			type:"POST",
 			cache:false,
@@ -204,8 +232,30 @@ $(document).ready(function() {
 		console.log("failure");
 		return false;
 	});
+	$('button#empsearch').click(function () {
+		var id = $('input#emp').val();
+		if(!id) {
+			$('div#area').html("");
+			$('div#area').append(all);
+			return;
+		}
+		$('input#complete').removeClass("imChecked");
+		$('input#complete').prop('checked', false);
+		$('ul#wholelist').empty();
+		$.ajax({
+			type:"POST",
+			cache:false,
+			url:"filteremployee.php",
+			data:{id:id},    // multiple data sent using ajax
+			success: function (html) {
+				$('ul#wholelist').append(html);
+			}
+		});
+		console.log("failure");
+		return false;
+	});
 			$('body').on('click', 'button#exitsubmit', function () {
-			console.log("MADE");
+			console.log("Exit CLICKED?");
 		$('div.modal-content').empty();
 		$('div#myModal').hide();
 	});
@@ -236,7 +286,8 @@ $(document).ready(function() {
 			$('div#adminchange').hide();
       return false;
     });
-		$('a#singleorder').click(function () {
+		$('body').on('click', 'a#singleorder', function () {
+			console.log("HEP");
 			var stuff = $(this).attr('value');
 			$.ajax({
 				type:"POST",

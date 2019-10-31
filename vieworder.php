@@ -3,18 +3,27 @@ include('connect.php');
 include('accountstuff.php');
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $orderid = $_POST["id"];
-   $sql = "SELECT o.order_id,a.first_name,a.last_name FROM orders_track o,account a WHERE o.order_id = $orderid AND o.user_id = a.user_id";
+   $sql = "SELECT o.order_id,o.active,a.first_name,a.last_name FROM orders o,account a WHERE o.order_id = $orderid AND o.user_id = a.user_id";
    $result = $conn->query($sql);
    if ($result->num_rows > 0) {
    	// output data of each row
    	while($row = $result->fetch_assoc()) {
       echo "<p>"."Order ID: ".$row["order_id"]."</p>";
+      $status = "";
+      $status .= "<p>"."Status: ";
+      if($row["active"]) {
+        $status .= "Complete";
+      } else {
+        $status .= "Incomplete";
+      }
+      $status .= "</p>";
+      echo $status;
    		echo "<p>Customer's Name: " . $row["first_name"]." ".$row["last_name"]."<p>";
    	}
    } else {
    echo "<p>Issue getting order's customer name</p>";
    }
-   $sql = "SELECT o.order_id,a.first_name,a.last_name FROM orders o,account a WHERE o.order_id = $orderid AND o.user_id = a.user_id";
+   $sql = "SELECT o.order_id,a.first_name,a.last_name FROM orders_track o,account a WHERE o.order_id = $orderid AND o.user_id = a.user_id";
    $result = $conn->query($sql);
    if ($result->num_rows > 0) {
    	// output data of each row
@@ -24,7 +33,7 @@ include('accountstuff.php');
    } else {
    echo "<p>Issue getting order's customer name</p>";
    }
-   $sql = "SELECT o.order_id,i.description,i.category FROM order_items o,inventory i WHERE o.order_id = $orderid AND o.item_id = i.item_id";
+   $sql = "SELECT o.order_id,i.description,i.category FROM order_items o,inventory i WHERE o.order_id = $orderid AND o.item_id = i.item_id ORDER BY i.category DESC";
    $result = $conn->query($sql);
    if ($result->num_rows > 0) {
    	// output data of each row

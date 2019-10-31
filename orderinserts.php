@@ -11,13 +11,13 @@ include('accountstuff.php');
    if (!isset($_SESSION))session_start();
    if (isset($_SESSION['user_id'])) {
      $user = $_SESSION['user_id'];
-     $sql = "INSERT INTO orders_track VALUES (NULL,$user)";
+     $sql = "INSERT INTO orders_track VALUES (NULL,122)";
      if ($conn->query($sql) === TRUE) {
        $last_id = $conn->insert_id;
      } else {
        echo "not success";
      }
-     $sql = "INSERT INTO orders VALUES ($last_id,3,NULL)";
+     $sql = "INSERT INTO orders VALUES ($last_id,$user,NULL)";
      if ($conn->query($sql) === TRUE) {
      } else {
        echo "not success";

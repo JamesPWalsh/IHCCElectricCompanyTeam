@@ -119,44 +119,47 @@
 
 
 <div id="change" style='display:none;'>
+	<div id="changesearch">
 	<label style="margin-bottom: 50px;">Order ID: </label>
 		<input type="text" name="Cost" id="changeid" value="" size="10" /><br>
+	</div>
 		<p id="successchange" style="margin-top:10px; margin-bottom:30px;"></p>
 		<div id="changestuff" style="display:none;">
 		<label>Model: </label>
-		<select id = "model">
+		<select id = "modelc">
 			<option value="lightning">Lightning (96v)</option> <!-- 8,999 -->
 			<option value="sparkle">Sparkle (48v)</option> <!-- 5,999 -->
 			<option value="thunder">Thunder (192v)</option> <!-- 10,999 -->
 			<option value="firefly">Firefly (24v)</option> <!-- 3,999 -->
 		</select>
 		<label>Color: </label>
-		<select id = "color">
+		<select id = "colorc">
 			<option value="black/white">Black & White</option>
 			<option value="yellow/red">Yellow & Red (+ $250)</option>
 		</select>
 		<label style="margin-bottom: 30px;">Graphics: </label>
-		<select id = "graphics">
+		<select id = "graphicsc">
 			<option value="no">No (No additional charge)</option>
 			<option value="yes">Yes (+ $350)</option>
 		</select>
 		<br>
 		<label>Wheels: </label>
-		<select id = "wheels">
+		<select id = "wheelsc">
 			<option value="18">18 Inch</option>
 			<option value="19">19 Inch</option>
 		</select>
 		<label>Premium Wheels </label>
-		<select id = "premium">
+		<select id = "premiumc">
 			<option value="no">No (No additional charge)</option>
 			<option value="yes">Yes (+ $100)</option>
 		</select>
 		<label>Seat Type: </label>
-		<select id = "seat">
+		<select id = "seatc">
 			<option value="solo">Solo</option>
 			<option value="standard">Standard</option>
 		</select>
 		<br>
+		<button id="editsubmit" style="margin-top: 35px;">Finish Edit</button>
 	</div>
 		<p id="successadd" style="margin-top:30px;"></p>
 </div>
@@ -166,12 +169,14 @@
 	</div>
 <button id="submit" style="margin-top: 15px;">Submit</button>
 <p id="successdelete" style="margin-top:30px;"></p>
+<p id="successedit" style="margin-top:30px;"></p>
 </center>
 <div id="add">
 
 </div>
 <script>
 $(document).ready(function() {
+	var id = 0;
 var option = 'Add';
 $( "select#opt" ).change(function () {
 option =  $('select#opt').val();
@@ -182,8 +187,10 @@ if (option == 'Add') {
 	$('div#changestuff').hide();
 	$('#successchange').html("");
 	$('#successdelete').html("");
+	$('button#submit').show();
 	$('div#neworder p').text("New Order");
 	$('div#neworder').show();
+	$('#successedit').html("");
 	$('div#add').show();
 } else if(option == 'Delete') {
 	$('div#neworder').show();
@@ -191,11 +198,17 @@ if (option == 'Add') {
 	$('#successchange').html("");
 	$('#successadd').html("");
 	$('div#delete').show();
+	$('button#submit').show();
 	$('div#neworder p').text("Delete Order");
 	$('div#change').hide();
 	$('div#add').hide();
+	$('#successedit').html("");
 } else if(option == 'Change') {
+	$('div#changesearch').show();
+	$('button#submit').show();
 	$('#successadd').html("");
+	$('#successchange').html("");
+	$('#successedit').html("");
 	$('div#delete').hide();
 	$('#successdelete').html("");
 	$('div#neworder').show();
@@ -206,12 +219,17 @@ if (option == 'Add') {
 	$('#successdelete').html("");
 	$('div#changestuff').hide();
 	$('#successchange').html("");
+	$('button#submit').hide();
 	$('#successadd').html("");
 	('div#delete').hide();
 	$('div#change').hide();
 	$('div#neworder').hide();
+	$('#successedit').html("");
 	$('div#add').hide();
 }
+});
+$('button#editsubmit').click(function () {
+	editOrder();
 });
 $('button#submit').click(function () {
 	if (option == 'Add') {
@@ -292,7 +310,7 @@ function changeValueForDB(input) {
 		};
 		var keys = Object.keys(items);
 		for (var key in items) {
-			if (Object.values(items[key]).indexOf(input) > -1) {
+			if (Object.values(items[key]).indexOf(input.trim()) > -1) {
 				var id = items[key].itemid;
 				var cat = items[key].category;
 				var both = new Object();
@@ -312,7 +330,7 @@ function add() {
 	var seat_itemid = 0;
 	model_itemid = changeValueForDB($('select#model option:selected').val());
 	color_itemid = changeValueForDB($('select#color option:selected').val());
-	wheels_itemid = changeValueForDB($('select#wheels option:selected').val()) + " " + $('select#premium option:selected').val();
+	wheels_itemid = changeValueForDB($('select#wheels option:selected').val() + " " + $('select#premium option:selected').val());
 	try {
 		graphics_itemid = changeValueForDB($('select#graphics option:selected').val());
 	}
@@ -357,18 +375,46 @@ function del() {
 	console.log("failure");
 	return false;
 }
-
-function searchchange() {
-	var id = $('input#changeid').val();
+function editOrder() {
 	if(!id) return;
-	var r = confirm("Are you sure you want to delete this order?");
-	if (r != true) {
-    return;
-  }
+	var checkid = id;
+	var model_itemid = 0;
+	var color_itemid = 0;
+	var wheels_itemid = 0;
+	var graphics_itemid = 0;
+	var seat_itemid = 0;
+	model_itemid = changeValueForDB($('select#modelc option:selected').val());
+	color_itemid = changeValueForDB($('select#colorc option:selected').val());
+	wheels_itemid = changeValueForDB($('select#wheelsc option:selected').val() + " " + $('select#premiumc option:selected').val());
+	try {
+		graphics_itemid = changeValueForDB($('select#graphicsc option:selected').val());
+	}
+	catch(error) {
+		graphics_itemid = 0;
+	}
+	if(graphics_itemid == undefined) graphics_itemid = 0;
+	seat_itemid = changeValueForDB($('select#seatc option:selected').val());
+	console.log("you will need items " + model_itemid + "," + color_itemid + "," + wheels_itemid + "," + graphics_itemid + "," + seat_itemid);
 	$.ajax({
 		type:"POST",
 		cache:false,
-		url:"adminchangeorder.php",
+		url:"adminfinisheditorder.php",
+		data:{id:checkid,model:model_itemid,color:color_itemid,wheels:wheels_itemid,
+		graphics:graphics_itemid,seat:seat_itemid},    //
+		success: function (html) {
+			$('p#successedit').append(html);
+
+		}
+	});
+}
+function searchchange() {
+	id = $('input#changeid').val();
+	if(!id) return;
+
+	$.ajax({
+		type:"POST",
+		cache:false,
+		url:"adminsearchchangeorder.php",
 		data:{id:id},    // multiple data sent using ajax
 		success: function (html) {
 			if(html == 'Error') {
@@ -377,9 +423,12 @@ function searchchange() {
 				$('p#successchange').append("Could not find order number " + id);
 				return;
 			}
+			$('button#submit').hide();
+			$('div#changesearch').hide();
 			$('div#changestuff').show();
 			$('p#successchange').html("");
 			$('p#successchange').append(html);
+
 		}
 	});
 	console.log("failure");

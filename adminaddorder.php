@@ -3,7 +3,6 @@ include('connect.php');
 include('accountstuff.php');
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
    $cust_id = $_POST["id"];
-   echo $cust_id;
    $model = $_POST["model"];
    $color = $_POST["color"];
    $wheels = $_POST["wheels"];
@@ -16,53 +15,46 @@ include('accountstuff.php');
      if ($conn->query($sql) === TRUE) {
        $last_id = $conn->insert_id;
      } else {
-       echo "not success";
+       echo "not success ot";
      }
      $sql = "INSERT INTO orders VALUES ($last_id,3,NULL)";
      if ($conn->query($sql) === TRUE) {
      } else {
-       echo "not success";
+       echo "not success orders";
      }
      if (isset($_POST['model'])) {
      $sql = "INSERT INTO order_items VALUES ($last_id,$model,1)";
      if ($conn->query($sql) === TRUE) {
      } else {
-       echo "not success";
+       echo "not success model";
      }
    }
-   if (isset($_POST['seat'])) {
-   $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
-   if ($conn->query($sql) === TRUE) {
-   } else {
-     echo "not success";
-   }
- }
    if (isset($_POST['color'])) {
    $sql = "INSERT INTO order_items VALUES ($last_id,$color,1)";
    if ($conn->query($sql) === TRUE) {
    } else {
-     echo "not success";
+     echo "not success color";
    }
   }
   if (isset($_POST['wheels'])) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$wheels,1)";
   if ($conn->query($sql) === TRUE) {
   } else {
-    echo "not success";
+    echo "not success wheel";
   }
   }
   if (isset($_POST['seat'])) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$seat,1)";
   if ($conn->query($sql) === TRUE) {
   } else {
-    echo "not success";
+    echo "not success seat";
   }
   }
   if ($graphic != 0) {
   $sql = "INSERT INTO order_items VALUES ($last_id,$graphic,1)";
   if ($conn->query($sql) === TRUE) {
   } else {
-    echo "not success";
+    echo "not success graphc";
   }
   }
   echo "Successfully added order to database";

@@ -42,7 +42,7 @@
 	</head>
 	<body>
 <div id="searchid">
-	<h1>Search Admin/Employee by Name</h1>
+	<h1>Search User by Name</h1>
 	<label style="margin-right: 78px;">Search ID by Name: </label><input type="text" name="username" id="form-name"><br>
 	<button id="idsearch">Search</button><br>
 	<label id="results">Results: </label><div id="idresults"></div><br><br>
