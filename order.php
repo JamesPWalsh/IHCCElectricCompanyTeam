@@ -18,6 +18,7 @@
 		<?php
 		if ($_SERVER["REQUEST_METHOD"] == "GET") {
   	$price = $_GET["price"];
+		$orderid = $_GET["id"];
 		}
 		 ?>
 		<script>
@@ -30,8 +31,23 @@
 		total = <?php echo (isset($price)) ? $price : '';?>;
 		total = numberWithCommas(total);
 		$('p#total').append(total);
-		$("#ordersubmit").click(function(){
-		$('#orderdisplay').show();
+		$("#successsubmit").click(function(){
+			var id = <?php echo (isset($orderid)) ? $orderid : '';?>;
+			console.log(id);
+			if(!id) return;
+			console.log(id);
+			$.ajax({
+				type:"POST",
+				cache:false,
+				url:"finishorder.php",
+				data:{id:id},    // multiple data sent using ajax
+				success: function (html) {
+					$('#orderdisplay').show();
+					console.log(html);
+					$("li#mycart").hide();
+				}
+			});
+			return false;
 		});
 		});
 		</script>
@@ -137,7 +153,7 @@ filter:drop-shadow(8px 8px 10px gray);
 	</div>
 	</div>
 	<div id="paypalsuccess" style="display:none">
-<p style="margin-top: 50px;font-size: 17px;">Sorry you currently cannot use paypal to pay. Paypal is currently suing us 25 million dollars for theft. We apologize.</p>
+<p style="margin-top: 50px;font-size: 17px;">Thank you for completing your order with Paypal. Your order has been successfully been submitted. Shortly you will receive an email with your tracking code and more information regarding your purchase.</p>
 	</div>
 	<script>
 		var paypal = $("select#paymentmethod option:selected").text();
@@ -166,7 +182,22 @@ filter:drop-shadow(8px 8px 10px gray);
 			$("div#paypal").on('click', function(e) {
 				console.log("clicked");
 				e.preventDefault();
-			$('div#paypalsuccess').show();
+				var id = <?php echo (isset($orderid)) ? $orderid : '';?>;
+				console.log(id);
+				if(!id) return;
+				console.log(id);
+				$.ajax({
+					type:"POST",
+					cache:false,
+					url:"finishorder.php",
+					data:{id:id},    // multiple data sent using ajax
+					success: function (html) {
+						$('div#paypalsuccess').show();
+						console.log(html);
+						$("li#mycart").hide();
+					}
+				});
+				return false;
 			});
 	});
 

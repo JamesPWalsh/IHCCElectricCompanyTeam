@@ -25,7 +25,7 @@ if($accType === 'employee') {
 } else {
   echo '<script language="javascript">';
   echo '$(document).ready(function(){';
-  echo '$("li#order").hide();';
+  echo '$("li#order").show();';
   echo '	});';
   echo '</script>';
 }

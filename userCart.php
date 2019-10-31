@@ -305,6 +305,7 @@ echo (isset($seat)) ? $seat : '';
 </div>
       <form id="cartsubmit" method="get" action="order.php">
         <input type="text" id="formprice" name="price" style="display:none;" value="<?php echo (isset($price)) ? $price : 'Invalid';?>"/>
+        <input type="text" id="formid" name="id" style="display:none;" value="<?php echo (isset($id)) ? $id : 'Invalid';?>"/>
         <button class="button" id="ordersubmit" onclick="getValues();" style="margin-top: 50px;">Check Out</button>
         <br><br><a id="back" style="color:black;" href="modelorder.php?order=false">Back to ordering options&#x2607;</a>
       </form>

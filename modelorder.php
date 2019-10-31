@@ -170,6 +170,7 @@
 					console.log(id);
 					$('div#checkoutbutton').show();
 					$('input#hiddenid').val(id);
+					$('li#order').show();
 				}
 			});
 			console.log("failure");
@@ -466,7 +467,7 @@
 		<div id='checkoutbutton' style='display:none;'>
 			<form action="userCart.php" method="post">
 			<input type='hidden' name='id' value='' id="hiddenid"/>
-	<button id='checkout'>Proceed to checkout</button>
+	<button id='checkout'>Proceed to Cart</button>
 </form>
 		</div>
 	</div>

@@ -1,12 +1,11 @@
 <?php
 include_once('connect.php');
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $cust_id = $_POST["id"];
-   $sql = "SELECT DISTINCT o.order_id,o.user_id,
+   $sql = "SELECT o.order_id,o.user_id,
    (SELECT ot.user_id FROM orders_track ot, account a WHERE a.user_id = ot.user_id and ot.order_id = o.order_id) AS custid
-   from orders o, account a, orders_track ot
-   where o.user_id = a.user_id
-   HAVING custid = $cust_id";
+   from orders o, account a
+   where o.user_id = a.user_id and o.active = 1
+   ORDER BY o.order_id";
    $result = $conn->query($sql);
    if ($result->num_rows > 0) {
    	// output data of each row
@@ -17,6 +16,7 @@ include_once('connect.php');
    } else {
    return false;
    }
+   $conn->close();
 return 0;
 }
 ?>
